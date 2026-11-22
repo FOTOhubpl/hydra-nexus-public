@@ -84,7 +84,7 @@ służy „Nowa analiza”.
 
 | # | Command | Expected output | Measured time (Linux x86_64 server, compose defaults, `HYDRA_CPU_BUDGET=8`) |
 |---|---|---|---|
-| 1 | `mkdir -p ~/HydraNexus/{models,data/external,cache/linux-x86_64,cache/enrich,state-docker,exports}` and `docker pull ghcr.io/fotohubpl/hydra-nexus:1.0.0` (or `docker compose build api`) | image present; the build imports cv2/torch/mediapipe/onnxruntime/`hydra.api`, so a missing library fails at build time | build from source: 368 s, image 4.3 GB (1.01 GB compressed); needs network once |
+| 1 | `mkdir -p ~/HydraNexus/{models,data/external,cache/linux-x86_64,cache/enrich,state-docker,exports}` and `docker pull ghcr.io/fotohubpl/hydra-nexus:1.0.1` (or `docker compose build api`) | image present; the build imports cv2/torch/mediapipe/onnxruntime/`hydra.api`, so a missing library fails at build time | build from source: 368 s, image 4.3 GB (1.01 GB compressed); needs network once |
 | 2 | `docker compose --profile models run --rm models` | exit 0; offline verify prints `ok` for every key | 155 s; about 1.2 GB models + 61 MB reference data in that measurement; needs network once |
 | 3 | `docker compose --profile cli run --rm cli analyse /hydra/data/<known-base>` (optionally after `cli reference build --from /hydra/data/<known-base>`, README "Galeria referencyjna") | campaigns, pairs and genes in the state DB; summary with campaign counts | synthetic 40 incidents: 58 s; 10 incidents with video: 441 s (274 s with `HYDRA_CPU_BUDGET=24`, 136 s warm cache) |
 | 4 | `docker compose --profile cli run --rm cli assign-batch /hydra/data/<new-items> --out /hydra/exports/<name>` | `exports/<name>/assignments.csv` and `.json`: one row per new item | synthetic 22 items: 53 s (median 1.73 s per item) |
