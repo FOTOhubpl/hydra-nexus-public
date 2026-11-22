@@ -17,15 +17,36 @@ sieci. Projekt powstał podczas HackNation 2026 (21–22.11.2026); streszczenie 
 [docs/REQUIREMENTS_SUMMARY.md](docs/REQUIREMENTS_SUMMARY.md). Repozytorium nie zawiera danych organizatora ani wag
 modeli.
 
-## Szybki start (5 minut + pobranie modeli), Docker
+## Szybki start: obraz pełny, jedno polecenie
 
-Wymagania: Linux x86_64, Docker Engine 24+ z Compose v2, 8 rdzeni, 16 GB RAM, około 10 GB wolnego dysku (szczegóły i
-macOS/Windows: [INSTALL.md](INSTALL.md)).
+Obraz `ghcr.io/fotohubpl/hydra-nexus:full` zawiera wszystkie zależności, przypięte wagi modeli (sha256 sprawdzone
+przy budowie) i dane referencyjne offline, więc nie ma kroku pobierania modeli. Wymagania: Docker (Linux x86_64 albo
+Docker Desktop), 8 rdzeni, 16 GB RAM, około 12 GB wolnego dysku (szczegóły: [INSTALL.md](INSTALL.md)).
+
+```bash
+mkdir -p ~/HydraNexus/{data,state-docker} && docker run -d --name hydra -p 127.0.0.1:8000:8000 \
+  -e HYDRA_IN_CONTAINER=1 -e HYDRA_API_HOST=0.0.0.0 \
+  -v ~/HydraNexus/state-docker:/hydra/state -v ~/HydraNexus/data:/hydra/data:ro ghcr.io/fotohubpl/hydra-nexus:full
+docker exec hydra cat /hydra/state/ADMIN_CREDENTIALS.txt          # login admin + hasło startowe
+```
+
+To samo z repozytorium i docker compose (port tylko na `127.0.0.1`; analiza CLI bez sieci w profilu `cli`):
 
 ```bash
 git clone https://github.com/FOTOhubpl/hydra-nexus-public && cd hydra-nexus-public
-export HYDRA_IMAGE_TAG=1.0.0
-docker pull ghcr.io/fotohubpl/hydra-nexus:$HYDRA_IMAGE_TAG          # obraz bez wag modeli (~1 GB do pobrania)
+mkdir -p ~/HydraNexus/{models,data,cache/linux-x86_64,cache/enrich,state-docker,exports}
+HYDRA_IMAGE_TAG=full docker compose up -d gui
+cat ~/HydraNexus/state-docker/ADMIN_CREDENTIALS.txt
+```
+
+### Alternatywa: obraz lekki + jednorazowe pobranie modeli
+
+Obraz `ghcr.io/fotohubpl/hydra-nexus:1.0.1` nie zawiera wag (~1 GB do pobrania); wagi pobiera jeden krok z siecią.
+
+```bash
+git clone https://github.com/FOTOhubpl/hydra-nexus-public && cd hydra-nexus-public
+export HYDRA_IMAGE_TAG=1.0.1
+docker pull ghcr.io/fotohubpl/hydra-nexus:$HYDRA_IMAGE_TAG          # obraz bez wag modeli
 
 # katalogi na hoście (domyślnie ~/HydraNexus; inny katalog: export HYDRA_HOST_ROOT=/sciezka)
 mkdir -p ~/HydraNexus/{models,data/external,cache/linux-x86_64,cache/enrich,state-docker,exports}
@@ -43,7 +64,7 @@ Otwórz **http://127.0.0.1:8000**, zaloguj się jako `admin` hasłem z pliku (sy
 [docs/release/JURY_PACKAGE.md](docs/release/JURY_PACKAGE.md). Analiza z wiersza poleceń, bez sieci:
 
 ```bash
-docker compose stop api                       # SQLite ma jednego pisarza
+docker compose stop api gui                   # SQLite ma jednego pisarza (obraz pełny: HYDRA_IMAGE_TAG=full przed poleceniami)
 docker compose --profile cli run --rm cli analyse /hydra/data/<znane-zgloszenia>
 docker compose --profile cli run --rm cli assign-batch /hydra/data/<nowe> --out /hydra/exports/wynik
 docker compose up -d api                      # wyniki w GUI; pliki: ~/HydraNexus/exports/wynik/assignments.csv
@@ -179,8 +200,10 @@ duplicates and variants, groups incidents into campaigns, assigns new material t
 pattern, and explains every link with matching features, their rarity (evidence bits) and their location in the
 material. The core runs offline; the repository contains no organiser data and no model weights.
 
-Quickstart (Linux x86_64, Docker): clone this repository, `docker pull ghcr.io/fotohubpl/hydra-nexus:1.0.0`, set
-`HYDRA_IMAGE_TAG=1.0.0`, create `~/HydraNexus/{models,data/external,cache/linux-x86_64,cache/enrich,state-docker,exports}`,
+Quickstart in one command: the full image `ghcr.io/fotohubpl/hydra-nexus:full` holds all dependencies, the pinned
+weights and the offline reference data (`docker run` line at the top of this README; password:
+`docker exec hydra cat /hydra/state/ADMIN_CREDENTIALS.txt`). Slim alternative: clone this repository,
+`docker pull ghcr.io/fotohubpl/hydra-nexus:1.0.1`, set `HYDRA_IMAGE_TAG=1.0.1`, create `~/HydraNexus/{models,data/external,cache/linux-x86_64,cache/enrich,state-docker,exports}`,
 run `docker compose --profile models run --rm models` once (pinned weights, sha256-verified), then
 `docker compose up -d api` (Docker Desktop: `docker compose --profile gui-ports up -d gui`). The first admin password
 is in `~/HydraNexus/state-docker/ADMIN_CREDENTIALS.txt`; open http://127.0.0.1:8000 and import your data under

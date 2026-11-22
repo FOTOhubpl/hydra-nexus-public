@@ -80,3 +80,40 @@ EXPOSE 8000
 # Shell form: /bin/sh expands HYDRA_API_PORT when the check runs, so a non-default port stays healthy.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=20s CMD curl -fsS "http://127.0.0.1:${HYDRA_API_PORT:-8000}/health" || exit 1
 CMD ["hydra", "serve"]
+
+# ---- stage 4: full image = runtime + pinned model weights + offline reference data ---------------------------------
+# `docker build --target full` / ghcr.io/fotohubpl/hydra-nexus:full. No models step needed: the 10 pinned models
+# (models.lock.json, including the optional e5-base) are fetched at build time and every file is checked against the
+# sha256 pinned in the repository; the reference-data bundle (MISP warninglists CC0, PSL MPL-2.0 unmodified, CERT
+# Polska snapshot) is the v1.0.0 release asset, checked against its sha256 and its per-set SHA256SUMS.
+# Baked under /opt/hydra (not under /hydra, which docker-compose.yml mounts from the host). Licence and attribution
+# files: /opt/hydra/models/LICENSES. All weights are permissive (Apache-2.0 / MIT, docs/MODELS.md).
+FROM api AS full
+ARG HYDRA_REFDATA_URL=https://github.com/FOTOhubpl/hydra-nexus-public/releases/download/v1.0.0/hydra-reference-data-20261122.tar.zst
+ARG HYDRA_REFDATA_SHA256=5b09ee603286743a010fa1dc7dc355910fd85c1faf6ec1afd9ca0c090ae3e190
+USER root
+RUN mkdir -p /opt/hydra/models /opt/hydra/data /opt/hydra/cache && chown -R hydra /opt/hydra
+USER hydra
+ENV HYDRA_MODELS_DIR=/opt/hydra/models HYDRA_DATA_DIR=/opt/hydra/data HYDRA_IMAGE_FLAVOUR=full
+# 1. reference data (download + sha256 of the archive, then SHA256SUMS of every set inside)
+RUN set -eu; curl -fsSL "$HYDRA_REFDATA_URL" -o /tmp/refdata.tar.zst; \
+    echo "$HYDRA_REFDATA_SHA256  /tmp/refdata.tar.zst" | sha256sum -c -; \
+    python scripts/reference_data.py install /tmp/refdata.tar.zst; rm -f /tmp/refdata.tar.zst
+# 2. models at the pinned revisions (network only during this build step), PSL tldextract cache for the verify step
+RUN set -eu; HYDRA_MODEL_DOWNLOAD=1 HYDRA_OFFLINE=0 HF_HUB_OFFLINE=0 TRANSFORMERS_OFFLINE=0 \
+    HYDRA_CACHE_DIR=/opt/hydra/cache HF_HOME=/tmp/hf \
+    python scripts/fetch_models.py --with-base --lock /opt/hydra/models/models.lock.json \
+      --only dinov2-small e5-small e5-base yunet sface faster-whisper-small mediapipe-face-landmarker \
+             audioseal-detector rapidocr rapidocr-v6 psl; \
+    rm -rf /tmp/hf
+# 3. verification: every model file must equal the sha256 pinned in the repository's models.lock.json; then the
+#    offline re-hash + one smoke test per entry under a socket guard (HF offline flags of the runtime image apply)
+RUN set -eu; python scripts/pin_check.py /app/models.lock.json /opt/hydra/models/models.lock.json; \
+    HYDRA_CACHE_DIR=/opt/hydra/cache python scripts/fetch_models.py --verify --lock /opt/hydra/models/models.lock.json
+COPY --chown=hydra THIRD_PARTY_NOTICES.md docs/MODELS.md docs/LICENSES.md /opt/hydra/models/LICENSES/
+RUN set -eu; d=/opt/hydra/models/LICENSES; \
+    python -c "import json; e=json.load(open('/app/models.lock.json'))['entries']; \
+open('$d/MODEL_LICENCES.txt','w').write(''.join(f\"{k}\t{v.get('repo') or v.get('source')}\t{v.get('revision')}\t{v['license']}\t{v.get('url','')}\n\" for k,v in e.items()))"; \
+    for s in misp-warninglists psl cert; do mkdir -p "$d/$s"; \
+      find /opt/hydra/data/external/$s -maxdepth 3 \( -iname 'SOURCE.md' -o -iname 'LICENSE*' -o -iname 'README.md' \) \
+        -not -path '*/lists/*' -exec cp {} "$d/$s/" \; ; done; ls -R "$d" | head -40

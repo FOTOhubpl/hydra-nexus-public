@@ -17,12 +17,37 @@ rozmiar danych wejściowych; N=200 to 226 MB stanu). GPU nie jest potrzebne. Sie
 
 ## 2. Docker (zalecane)
 
+**Obraz pełny (jedno polecenie, bez kroku modeli).** `ghcr.io/fotohubpl/hydra-nexus:full` (także `:1.0.1-full`) =
+obraz lekki + 10 przypiętych modeli (w tym opcjonalny `e5-base`) + dane referencyjne offline (MISP, PSL, CERT Polska).
+Przy budowie każdy plik modelu jest porównany z sha256 z `models.lock.json` (`scripts/pin_check.py`), potem test
+dymny każdego modelu; paczka referencyjna jest sprawdzona sumą sha256 i `SHA256SUMS`. Wagi i dane leżą w
+`/opt/hydra/models` i `/opt/hydra/data/external` (nie pod montowanym `/hydra`), licencje w
+`/opt/hydra/models/LICENSES`. Rozmiar: patrz README / notatki wydania.
+
+```bash
+mkdir -p ~/HydraNexus/{data,state-docker} && docker run -d --name hydra -p 127.0.0.1:8000:8000 \
+  -e HYDRA_IN_CONTAINER=1 -e HYDRA_API_HOST=0.0.0.0 \
+  -v ~/HydraNexus/state-docker:/hydra/state -v ~/HydraNexus/data:/hydra/data:ro ghcr.io/fotohubpl/hydra-nexus:full
+docker exec hydra cat /hydra/state/ADMIN_CREDENTIALS.txt
+# analiza bez sieci w osobnym kontenerze (zatrzymaj najpierw GUI: docker stop hydra):
+docker run --rm --network none -v ~/HydraNexus/state-docker:/hydra/state -v ~/HydraNexus/data:/hydra/data:ro \
+  ghcr.io/fotohubpl/hydra-nexus:full hydra analyse /hydra/data/<folder>
+# weryfikacja modeli w obrazie (offline):
+docker run --rm --network none -e HYDRA_CACHE_DIR=/opt/hydra/cache --entrypoint bash ghcr.io/fotohubpl/hydra-nexus:full \
+  -c 'python scripts/pin_check.py /app/models.lock.json /opt/hydra/models/models.lock.json && python scripts/fetch_models.py --verify --lock /opt/hydra/models/models.lock.json'
+```
+
+Z docker compose: `HYDRA_IMAGE_TAG=full docker compose up -d gui` (albo `... up -d api` na Linuksie z siecią hosta);
+profil `cli` analogicznie z `HYDRA_IMAGE_TAG=full`. Usługa `models` nie jest potrzebna.
+
+**Obraz lekki + krok modeli:**
+
 **Linux x86_64**, Docker Engine 24+ i Compose v2 (sprawdzone: Docker 29.10.0). Usługa `api` używa sieci hosta i
 słucha tylko na `127.0.0.1`.
 
 ```bash
 git clone https://github.com/FOTOhubpl/hydra-nexus-public && cd hydra-nexus-public
-export HYDRA_IMAGE_TAG=1.0.0                     # albo zbuduj sam: docker compose build api
+export HYDRA_IMAGE_TAG=1.0.1                     # obraz lekki; pełny (z modelami): HYDRA_IMAGE_TAG=full, bez kroku models
 docker pull ghcr.io/fotohubpl/hydra-nexus:$HYDRA_IMAGE_TAG
 mkdir -p ~/HydraNexus/{models,data/external,cache/linux-x86_64,cache/enrich,state-docker,exports}
 docker compose --profile models run --rm models  # modele + CERT/PSL/MISP, sha256 + testy offline
@@ -131,4 +156,4 @@ mkdir -p ~/HydraNexus/state-docker && docker compose up -d api                  
 
 Ze źródeł: `just reset-state` (przenosi `$HYDRA_STATE_DIR` do kopii z datą, niczego nie kasuje). Modele
 (`~/HydraNexus/models`) i dane referencyjne zostają; pamięć podręczna cech: `~/HydraNexus/cache/` (można usunąć).
-Całkowite usunięcie: `docker compose down`, `docker image rm ghcr.io/fotohubpl/hydra-nexus:1.0.0`, `rm -rf ~/HydraNexus`.
+Całkowite usunięcie: `docker compose down`, `docker image rm ghcr.io/fotohubpl/hydra-nexus:full ghcr.io/fotohubpl/hydra-nexus:1.0.1`, `rm -rf ~/HydraNexus`.

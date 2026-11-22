@@ -74,7 +74,7 @@ EOF
 1. Na maszynie z siecią wykonaj krok z sekcji 2 (Docker albo `just models-fetch`).
 2. Skopiuj katalogi `~/HydraNexus/models/`, `~/HydraNexus/data/external/` i `~/HydraNexus/cache/<platforma>/tldextract/`
    (np. `tar -C ~/HydraNexus -cf hydra-models.tar models data/external cache`), na docelowej maszynie rozpakuj pod
-   `~/HydraNexus` (albo pod `$HYDRA_HOST_ROOT`). Obraz przenieś przez `docker save ghcr.io/fotohubpl/hydra-nexus:1.0.0 |
+   `~/HydraNexus` (albo pod `$HYDRA_HOST_ROOT`). Obraz przenieś przez `docker save ghcr.io/fotohubpl/hydra-nexus:1.0.1 |
    gzip > hydra.tar.gz` i `docker load < hydra.tar.gz`.
 3. Na maszynie docelowej, bez sieci: `just models-verify` albo
    `docker compose --profile models run --rm --entrypoint python models scripts/fetch_models.py --verify --lock /hydra/models/models.lock.json`

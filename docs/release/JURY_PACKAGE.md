@@ -30,7 +30,7 @@ admin`). Szczegóły: [SECURITY_AUTH.md](../SECURITY_AUTH.md).
 
 | Ścieżka | Polecenie | Wynik |
 |---|---|---|
-| Obraz | `docker pull ghcr.io/fotohubpl/hydra-nexus:1.0.0` (albo `:latest`; budowa ze źródeł: `docker compose build api`) | obraz bez wag modeli |
+| Obraz | pełny: `docker pull ghcr.io/fotohubpl/hydra-nexus:full` (wagi i dane referencyjne w środku, krok „Modele” odpada, `HYDRA_IMAGE_TAG=full`); lekki: `ghcr.io/fotohubpl/hydra-nexus:1.0.1` (albo `:latest`; budowa ze źródeł: `docker compose build api`) | lekki: obraz bez wag modeli |
 | Modele (jednorazowo, sieć) | `docker compose --profile models run --rm models` | pobranie, ponowne haszowanie i test dymny każdego modelu offline |
 | Docker (Linux) | `docker compose up -d api`, potem http://127.0.0.1:8000/ | GUI; na pustym Pulpicie karta „Pusta baza: zaimportuj własny zbiór incydentów” |
 | Docker Desktop (macOS/Windows) | `docker compose --profile gui-ports up -d gui` (albo `just docker-gui`) | to samo GUI na http://127.0.0.1:8000/ |

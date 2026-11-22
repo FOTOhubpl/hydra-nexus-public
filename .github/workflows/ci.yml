@@ -43,6 +43,17 @@ jobs:
         with:
           enable-cache: true
           cache-dependency-glob: uv.lock
+      # Some Python tests (tests/pipeline_audit) execute the UI's TypeScript modules with Node: ui/node_modules is needed.
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115  # v6 (version from ui/package.json packageManager)
+        with:
+          package_json_file: ui/package.json
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: ui/pnpm-lock.yaml
+      - name: UI dependencies (for the Node-backed Python tests)
+        run: cd ui && pnpm install --frozen-lockfile && pnpm build
       - name: Python environment
         run: |
           uv python install 3.11
