@@ -1,0 +1,29 @@
+{
+ "query_status": "ok",
+ "urls": [
+  {
+   "id": "70010",
+   "url": "http://orlen-nagroda775.test/bins/45.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:01:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70011",
+   "url": "http://nagroda-energia187.test/bins/71.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:01:00 UTC",
+   "urlhaus_reference": null
+  }
+ ]
+}

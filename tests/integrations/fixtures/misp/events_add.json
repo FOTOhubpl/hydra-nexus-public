@@ -1,0 +1,4 @@
+{
+ "_provenance": "Hand-written from the public MISP OpenAPI (/events/add response); not recorded from a real call.",
+ "Event": {"id": "42", "uuid": "5f0c1a2b-0000-4000-8000-000000000042", "info": "HYDRA NEXUS"}
+}

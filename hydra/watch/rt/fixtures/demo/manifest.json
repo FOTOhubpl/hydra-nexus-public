@@ -1,0 +1,97 @@
+{
+ "name": "demo",
+ "synthetic": true,
+ "interval_s": 60,
+ "description_pl": "SYNTETYCZNE nagranie demonstracyjne: 12 odpytań co minutę (CERT Polska, URLhaus, OpenPhish, crt.sh, Meta) z wymyślonymi domenami .example/.test i syntetyczną listą obserwowanych. Trzy dodatkowe wpisy w formacie CERT niosą prawdziwe hosty z lokalnych kampanii (jeśli lista z kampanii jest zbudowana), żeby pokazać dopasowanie do istniejących kampanii.",
+ "watchlist": [
+  {
+   "kind": "host",
+   "value": "promo.zysk-orlen-demo.example",
+   "label": "SYNTETYCZNA kampania A (inwestycje)"
+  },
+  {
+   "kind": "domain",
+   "value": "inwestuj-baltyk-demo.example",
+   "label": "SYNTETYCZNA kampania B (energia)"
+  },
+  {
+   "kind": "phone",
+   "value": "+48 512 000 111",
+   "label": "SYNTETYCZNA kampania A (infolinia operatora)"
+  },
+  {
+   "kind": "wallet",
+   "value": "0x52908400098527886E0F7030069857D2E4169EE7",
+   "label": "SYNTETYCZNA kampania C"
+  },
+  {
+   "kind": "tracker",
+   "value": "G-DEMO12345",
+   "label": "SYNTETYCZNA kampania B (tracker)"
+  },
+  {
+   "kind": "page_id",
+   "value": "100000000000001",
+   "label": "SYNTETYCZNA kampania A (strona reklamodawcy)"
+  },
+  {
+   "kind": "url",
+   "value": "https://paczka-doplata-demo.test/pay/",
+   "label": "SYNTETYCZNA kampania D (paczki)"
+  }
+ ],
+ "ct_keywords": [
+  "zysk-orlen"
+ ],
+ "campaign_probes": {
+  "tick": 4,
+  "count": 3
+ },
+ "ticks": [
+  {
+   "cert-pl": "t00-cert.log",
+   "openphish": "t00-openphish.txt"
+  },
+  {
+   "cert-pl": "t01-cert.log",
+   "urlhaus": "t01-urlhaus.json"
+  },
+  {
+   "cert-pl": "t02-cert.log"
+  },
+  {
+   "cert-pl": "t03-cert.log",
+   "crtsh": "t03-crtsh.json"
+  },
+  {
+   "cert-pl": "t04-cert.log",
+   "urlhaus": "t04-urlhaus.json"
+  },
+  {
+   "cert-pl": "t05-cert.log",
+   "meta-adlibrary": "t05-meta.json"
+  },
+  {
+   "cert-pl": "t06-cert.log",
+   "openphish": "t06-openphish.txt"
+  },
+  {
+   "cert-pl": "t07-cert.log",
+   "urlhaus": "t07-urlhaus.json"
+  },
+  {
+   "cert-pl": "t08-cert.log",
+   "crtsh": "t08-crtsh.json"
+  },
+  {
+   "cert-pl": "t09-cert.log"
+  },
+  {
+   "cert-pl": "t10-cert.log",
+   "urlhaus": "t10-urlhaus.json"
+  },
+  {
+   "cert-pl": "t11-cert.log"
+  }
+ ]
+}

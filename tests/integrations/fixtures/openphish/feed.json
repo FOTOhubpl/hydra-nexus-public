@@ -1,0 +1,4 @@
+{
+ "_provenance": "Hand-written sample in the shape of the OpenPhish community feed.txt (one URL per line); not downloaded. Invented example hosts.",
+ "feed": "https://stawy-zdrowie.example/login\nhttps://other-phish.example/x\nnot-a-url\n"
+}

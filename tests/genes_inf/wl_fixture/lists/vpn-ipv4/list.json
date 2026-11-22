@@ -1,0 +1,16 @@
+{
+ "name": "synthetic vpn-ipv4",
+ "type": "cidr",
+ "version": 1,
+ "description": "synthetic test fixture",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-src|port",
+  "ip-dst|port"
+ ],
+ "list": [
+  "146.70.77.0/24"
+ ]
+}

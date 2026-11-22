@@ -1,0 +1,17 @@
+{
+  "version": "2026-11-21.1",
+  "note": "HYDRA-owned phone lists for tiering (docs/cleanroom/phone_disposable.md). brand_hotlines: official hotlines of brands that scams impersonate; written from public brand contact pages as prior knowledge, not re-verified online on 2026-11-21 (assumed). receive_sms: public receive-SMS numbers; empty in the repository, a deployment adds numbers in $HYDRA_DATA_DIR/nask/lexicons/phone_lists.json. A listed number becomes boilerplate tier (0 bits).",
+  "brand_hotlines": {
+    "+48800302302": "pko_bp",
+    "+48801300800": "mbank",
+    "+48426300800": "mbank",
+    "+48801365365": "pekao",
+    "+48801222222": "ing",
+    "+48618119999": "santander",
+    "+48801331331": "millennium",
+    "+48225601600": "zus",
+    "+48800190590": "nfz",
+    "+48722444000": "inpost"
+  },
+  "receive_sms": {}
+}

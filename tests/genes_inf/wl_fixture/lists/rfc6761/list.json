@@ -1,0 +1,16 @@
+{
+ "name": "synthetic rfc6761",
+ "type": "hostname",
+ "version": 1,
+ "description": "synthetic test fixture",
+ "matching_attributes": [
+  "hostname",
+  "domain",
+  "domain|ip"
+ ],
+ "list": [
+  "invalid",
+  "localhost",
+  "10.in-addr.arpa"
+ ]
+}

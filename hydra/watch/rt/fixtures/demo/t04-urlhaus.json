@@ -1,0 +1,75 @@
+{
+ "query_status": "ok",
+ "urls": [
+  {
+   "id": "70040",
+   "url": "http://kryptowaluty-zwrot669.test/bins/79.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:04:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70041",
+   "url": "http://energia-loteria952.test/bins/91.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:04:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70042",
+   "url": "http://bonus-oszczednosci495.test/bins/41.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:04:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70043",
+   "url": "http://inwestycje-loteria665.test/bins/55.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:04:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70044",
+   "url": "http://dywidenda-zysk482.test/bins/32.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:04:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70999",
+   "url": "https://paczka-doplata-demo.test/pay/",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "phishing"
+   ],
+   "date_added": "2026-11-20 04:04:00 UTC"
+  }
+ ]
+}

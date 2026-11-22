@@ -1,0 +1,24 @@
+[
+ {
+  "id": "syn-ad-1",
+  "page_id": "100000000000001",
+  "page_name": "Inwestycje Demo (SYNTETYCZNE)",
+  "link_urls": [
+   "https://promo.zysk-orlen-demo.example/start"
+  ],
+  "keyword": "zysk",
+  "text": "Zarabiaj z nami! Zadzwoń: +48 512 000 111",
+  "ad_delivery_start_time": "2026-11-20T04:05:00+00:00"
+ },
+ {
+  "id": "syn-ad-2",
+  "page_id": "100000000000077",
+  "page_name": "Sklep Demo (SYNTETYCZNE)",
+  "link_urls": [
+   "https://zysk-zysk714.example/"
+  ],
+  "keyword": "bonus",
+  "text": "Promocja tylko dziś",
+  "ad_delivery_start_time": "2026-11-20T04:05:00+00:00"
+ }
+]

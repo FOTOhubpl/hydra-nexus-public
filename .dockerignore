@@ -1,0 +1,16 @@
+.git
+.venv
+**/node_modules
+ui/dist
+**/__pycache__
+.pytest_cache
+.ruff_cache
+.claude
+data
+models
+state
+cache
+docs/spec
+*.sqlite
+*.zip
+.env

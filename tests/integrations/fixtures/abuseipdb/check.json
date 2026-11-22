@@ -1,0 +1,14 @@
+{
+ "_provenance": "Hand-written from the public AbuseIPDB API v2 documentation (GET /api/v2/check); not recorded from a real call. Values are invented.",
+ "data": {
+  "ipAddress": "203.0.113.10",
+  "isPublic": true,
+  "isWhitelisted": false,
+  "abuseConfidenceScore": 88,
+  "countryCode": "NL",
+  "usageType": "Data Center/Web Hosting/Transit",
+  "isp": "Example Hosting B.V.",
+  "totalReports": 41,
+  "lastReportedAt": "2026-10-03T12:00:00+00:00"
+ }
+}

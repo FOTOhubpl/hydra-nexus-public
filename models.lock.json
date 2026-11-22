@@ -1,0 +1,440 @@
+{
+  "schema": 1,
+  "generator": "scripts/fetch_models.py",
+  "roots": {
+    "models": "$HYDRA_MODELS_DIR",
+    "external": "$HYDRA_DATA_DIR/external",
+    "cache": "$HYDRA_CACHE_DIR"
+  },
+  "policy": "pinned revisions; safetensors/ONNX/TFLite/CTranslate2/config/tokenizer only; no pickle weights; no trust_remote_code",
+  "entries": {
+    "dinov2-small": {
+      "kind": "model",
+      "source": "huggingface",
+      "repo": "facebook/dinov2-small",
+      "url": "https://huggingface.co/facebook/dinov2-small/tree/ed25f3a31f01632728cabb09d1542f84ab7b0056",
+      "revision": "ed25f3a31f01632728cabb09d1542f84ab7b0056",
+      "license": "Apache-2.0",
+      "backend": "transformers AutoModel (PyTorch, safetensors)",
+      "root": "models",
+      "dir": "dinov2-small",
+      "files": [
+        {
+          "path": "config.json",
+          "size": 547,
+          "sha256": "1809f83e3bdb1609a501a610ad4a742f4fd8ae44d72ca4aa0df52d1f2ac8628d"
+        },
+        {
+          "path": "model.safetensors",
+          "size": 88249960,
+          "sha256": "ae1e99fcefd534ed978cdeb8326f08030c96e28b7a81ffcbc98a857c84d14be1"
+        },
+        {
+          "path": "preprocessor_config.json",
+          "size": 436,
+          "sha256": "14e780d86fa1861f8751f868d7f45425b5feb55c38ca26f152ca5097ab30f828"
+        }
+      ],
+      "total_size": 88250943,
+      "downloaded": "2026-11-20"
+    },
+    "e5-small": {
+      "kind": "model",
+      "source": "huggingface",
+      "repo": "intfloat/multilingual-e5-small",
+      "url": "https://huggingface.co/intfloat/multilingual-e5-small/tree/614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "license": "MIT",
+      "backend": "sentence-transformers (PyTorch, safetensors)",
+      "root": "models",
+      "dir": "e5-small",
+      "files": [
+        {
+          "path": "1_Pooling/config.json",
+          "size": 200,
+          "sha256": "987f7a67a38fa564c849bb5d277c52ab9088a84368fc0be31a354125aebb12a0"
+        },
+        {
+          "path": "config.json",
+          "size": 655,
+          "sha256": "69137736cab8b8903a07fe8afaafdda25aac55415a12a55d1bffa9f581abf959"
+        },
+        {
+          "path": "model.safetensors",
+          "size": 470641600,
+          "sha256": "1a55775f53449dac10a2bcbc312469fac40b96d53198c407081a831f81c98477"
+        },
+        {
+          "path": "modules.json",
+          "size": 387,
+          "sha256": "c6e29747481e8b5dd2b58401966aeac910de39092f90cda9a704b1545f902b04"
+        },
+        {
+          "path": "sentence_bert_config.json",
+          "size": 57,
+          "sha256": "948201d8329907aae938fa62f9ceeed53f5694dacc2b87b9f3b78b37ee986529"
+        },
+        {
+          "path": "sentencepiece.bpe.model",
+          "size": 5069051,
+          "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865"
+        },
+        {
+          "path": "special_tokens_map.json",
+          "size": 167,
+          "sha256": "d05497f1da52c5e09554c0cd874037a083e1dc1b9cfd48034d1c717f1afc07a7"
+        },
+        {
+          "path": "tokenizer.json",
+          "size": 17082730,
+          "sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39"
+        },
+        {
+          "path": "tokenizer_config.json",
+          "size": 443,
+          "sha256": "a1d6bc8734a6f635dc158508bef000f8e2e5a759c7d92f984b2c86e5ff53425b"
+        }
+      ],
+      "total_size": 492795290,
+      "downloaded": "2026-11-20"
+    },
+    "e5-base": {
+      "kind": "model",
+      "source": "huggingface",
+      "repo": "intfloat/multilingual-e5-base",
+      "url": "https://huggingface.co/intfloat/multilingual-e5-base/tree/d128750597153bb5987e10b1c3493a34e5a4502a",
+      "revision": "d128750597153bb5987e10b1c3493a34e5a4502a",
+      "license": "MIT",
+      "backend": "sentence-transformers (PyTorch, safetensors)",
+      "root": "models",
+      "dir": "e5-base",
+      "files": [
+        {
+          "path": "1_Pooling/config.json",
+          "size": 200,
+          "sha256": "f586ab6c734af7b8d14d898bfa7faa886f23b46f86dd1730514309893af13d75"
+        },
+        {
+          "path": "config.json",
+          "size": 694,
+          "sha256": "9dab198f24c8c0879e481cf7822005d5ecbceedbacb390ffafa594e28d31bac4"
+        },
+        {
+          "path": "model.safetensors",
+          "size": 1112201288,
+          "sha256": "a18a44fad1d0b46ded15928144138cff1135d5cc8233bdd90be5f18822de09a7"
+        },
+        {
+          "path": "modules.json",
+          "size": 387,
+          "sha256": "c6e29747481e8b5dd2b58401966aeac910de39092f90cda9a704b1545f902b04"
+        },
+        {
+          "path": "sentence_bert_config.json",
+          "size": 57,
+          "sha256": "948201d8329907aae938fa62f9ceeed53f5694dacc2b87b9f3b78b37ee986529"
+        },
+        {
+          "path": "sentencepiece.bpe.model",
+          "size": 5069051,
+          "sha256": "cfc8146abe2a0488e9e2a0c56de7952f7c11ab059eca145a0a727afce0db2865"
+        },
+        {
+          "path": "special_tokens_map.json",
+          "size": 280,
+          "sha256": "06e405a36dfe4b9604f484f6a1e619af1a7f7d09e34a8555eb0b77b66318067f"
+        },
+        {
+          "path": "tokenizer.json",
+          "size": 17082660,
+          "sha256": "62c24cdc13d4c9952d63718d6c9fa4c287974249e16b7ade6d5a85e7bbb75626"
+        },
+        {
+          "path": "tokenizer_config.json",
+          "size": 418,
+          "sha256": "efb5c0d09722e5fe59a462cd2a9976ee216d55b037597d997cd3fe833216da15"
+        }
+      ],
+      "total_size": 1134355035,
+      "downloaded": "2026-11-20"
+    },
+    "yunet": {
+      "kind": "model",
+      "source": "huggingface",
+      "repo": "opencv/face_detection_yunet",
+      "url": "https://huggingface.co/opencv/face_detection_yunet/tree/3cc26e7f1014a5ee5d74a42acee58bafc9d0a310",
+      "revision": "3cc26e7f1014a5ee5d74a42acee58bafc9d0a310",
+      "license": "MIT",
+      "backend": "OpenCV cv2.FaceDetectorYN (ONNX)",
+      "root": "models",
+      "dir": "yunet",
+      "cross_check": {
+        "repo": "https://github.com/opencv/opencv_zoo",
+        "commit": "48b10fa505aeb51fbd127fc60a5c660040e823b7",
+        "path": "models/face_detection_yunet/face_detection_yunet_2023mar.onnx",
+        "lfs_oid_sha256": "8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4"
+      },
+      "files": [
+        {
+          "path": "LICENSE",
+          "size": 1085,
+          "sha256": "c83b8120c50ccbd4c4f96edf53141bdd566ebb8f8e9227e415326aa1b1aba958"
+        },
+        {
+          "path": "face_detection_yunet_2023mar.onnx",
+          "size": 232589,
+          "sha256": "8f2383e4dd3cfbb4553ea8718107fc0423210dc964f9f4280604804ed2552fa4"
+        }
+      ],
+      "total_size": 233674,
+      "downloaded": "2026-11-20"
+    },
+    "sface": {
+      "kind": "model",
+      "source": "huggingface",
+      "repo": "opencv/face_recognition_sface",
+      "url": "https://huggingface.co/opencv/face_recognition_sface/tree/3d7082438a6e4551e840c9b2bb60b71e8da4b524",
+      "revision": "3d7082438a6e4551e840c9b2bb60b71e8da4b524",
+      "license": "Apache-2.0",
+      "backend": "OpenCV cv2.FaceRecognizerSF (ONNX)",
+      "root": "models",
+      "dir": "sface",
+      "cross_check": {
+        "repo": "https://github.com/opencv/opencv_zoo",
+        "commit": "48b10fa505aeb51fbd127fc60a5c660040e823b7",
+        "path": "models/face_recognition_sface/face_recognition_sface_2021dec.onnx",
+        "lfs_oid_sha256": "0ba9fbfa01b5270c96627c4ef784da859931e02f04419c829e83484087c34e79"
+      },
+      "files": [
+        {
+          "path": "LICENSE",
+          "size": 11358,
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "face_recognition_sface_2021dec.onnx",
+          "size": 38696353,
+          "sha256": "0ba9fbfa01b5270c96627c4ef784da859931e02f04419c829e83484087c34e79"
+        }
+      ],
+      "total_size": 38707711,
+      "downloaded": "2026-11-20"
+    },
+    "faster-whisper-small": {
+      "kind": "model",
+      "source": "huggingface",
+      "repo": "Systran/faster-whisper-small",
+      "url": "https://huggingface.co/Systran/faster-whisper-small/tree/536b0662742c02347bc0e980a01041f333bce120",
+      "revision": "536b0662742c02347bc0e980a01041f333bce120",
+      "license": "MIT",
+      "backend": "faster-whisper / CTranslate2 (CPU int8)",
+      "root": "models",
+      "dir": "faster-whisper-small",
+      "files": [
+        {
+          "path": "config.json",
+          "size": 2370,
+          "sha256": "b55496ac7940a7ae47d2c01eab40edfd8701feec1229d9cce3b40014383fb828"
+        },
+        {
+          "path": "model.bin",
+          "size": 483546902,
+          "sha256": "3e305921506d8872816023e4c273e75d2419fb89b24da97b4fe7bce14170d671"
+        },
+        {
+          "path": "tokenizer.json",
+          "size": 2203239,
+          "sha256": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab"
+        },
+        {
+          "path": "vocabulary.txt",
+          "size": 459861,
+          "sha256": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913"
+        }
+      ],
+      "total_size": 486212372,
+      "downloaded": "2026-11-21"
+    },
+    "mediapipe-face-landmarker": {
+      "kind": "model",
+      "source": "https://storage.googleapis.com/mediapipe-models/face_landmarker",
+      "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker",
+      "revision": "float16/1",
+      "pinned_by": "versioned URL path float16/1 + sha256 (same value as hydra/genome/vid_avsync.LANDMARKER_SHA256)",
+      "license": "Apache-2.0 (MediaPipe model card: Face Landmarker)",
+      "backend": "mediapipe.tasks FaceLandmarker (TFLite, CPU)",
+      "root": "models",
+      "dir": "mediapipe-face-landmarker",
+      "files": [
+        {
+          "path": "face_landmarker.task",
+          "size": 3758596,
+          "sha256": "64184e229b263107bc2b804c6625db1341ff2bb731874b0bcc2fe6544e0bc9ff",
+          "url": "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task"
+        }
+      ],
+      "total_size": 3758596,
+      "downloaded": "2026-11-21"
+    },
+    "audioseal-detector": {
+      "kind": "model",
+      "source": "https://huggingface.co/facebook/audioseal",
+      "url": "https://huggingface.co/facebook/audioseal/tree/3c19eba53390776cf2cc9ed5f6c9ac67ce72ecba",
+      "revision": "3c19eba53390776cf2cc9ed5f6c9ac67ce72ecba",
+      "pinned_by": "HF commit 3c19eba5 + sha256 of detector_base.pth and of the converted safetensors (same values as hydra/genome/dfk.AS_SRC_SHA256 / AS_SHA256)",
+      "license": "MIT (code and weights, facebook/audioseal model card; training data VoxPopuli, CC0)",
+      "backend": "hydra.vendor.audioseal detector (PyTorch, safetensors, CPU)",
+      "root": "models",
+      "dir": "audioseal-detector",
+      "derived_from": {
+        "name": "detector_base.pth",
+        "url": "https://huggingface.co/facebook/audioseal/resolve/3c19eba53390776cf2cc9ed5f6c9ac67ce72ecba/detector_base.pth",
+        "sha256": "8a78e8a83584113523e161fc599fcab10fd0e94c04d2eb9d2fa1e9ec91ab69d9",
+        "size": 34667641
+      },
+      "files": [
+        {
+          "path": "detector_base.safetensors",
+          "size": 34593512,
+          "sha256": "449efba12e01c194ac526c0c7dfd062bfe9fe5a6799273d13d78e174926cf1f9"
+        }
+      ],
+      "total_size": 34593512,
+      "downloaded": "2026-11-21"
+    },
+    "rapidocr": {
+      "kind": "model",
+      "source": "https://www.modelscope.cn/models/RapidAI/RapidOCR",
+      "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR",
+      "revision": "v3.10.0",
+      "pinned_by": "rapidocr==3.10.0 default_models.yaml: onnxruntime.PP-OCRv5 (det mobile, cls mobile, rec latin mobile)",
+      "license": "Apache-2.0 (PaddleOCR PP-OCRv5 weights, ONNX conversion by RapidAI)",
+      "backend": "RapidOCR 3.10.0 + onnxruntime (CPU)",
+      "root": "models",
+      "dir": "rapidocr",
+      "files": [
+        {
+          "path": "ch_PP-OCRv5_det_mobile.onnx",
+          "size": 4819576,
+          "sha256": "4d97c44a20d30a81aad087d6a396b08f786c4635742afc391f6621f5c6ae78ae",
+          "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv5/det/ch_PP-OCRv5_det_mobile.onnx"
+        },
+        {
+          "path": "ch_PP-LCNet_x0_25_textline_ori_cls_mobile.onnx",
+          "size": 1018508,
+          "sha256": "54379ae5174d026780215fc748a7f31910dee36818e63d49e17dc598ecc82df7",
+          "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv5/cls/ch_PP-LCNet_x0_25_textline_ori_cls_mobile.onnx"
+        },
+        {
+          "path": "latin_PP-OCRv5_rec_mobile.onnx",
+          "size": 7904513,
+          "sha256": "b20bd37c168a570f583afbc8cd7925603890efbcdc000a59e22c269d160b5f5a",
+          "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv5/rec/latin_PP-OCRv5_rec_mobile.onnx"
+        }
+      ],
+      "total_size": 13742597,
+      "downloaded": "2026-11-20"
+    },
+    "rapidocr-v6": {
+      "kind": "model",
+      "source": "https://www.modelscope.cn/models/RapidAI/RapidOCR",
+      "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR",
+      "revision": "v3.10.0",
+      "pinned_by": "rapidocr==3.10.0 default_models.yaml: onnxruntime.PP-OCRv6 det/rec small + PP-OCRv4 cls mobile (identical to the files bundled in the wheel)",
+      "license": "Apache-2.0 (PaddleOCR PP-OCRv6/v2.0 weights, ONNX conversion by RapidAI)",
+      "backend": "RapidOCR 3.10.0 + onnxruntime (CPU)",
+      "root": "models",
+      "dir": "rapidocr-v6",
+      "files": [
+        {
+          "path": "PP-OCRv6_det_small.onnx",
+          "size": 9929594,
+          "sha256": "090f04abcd9d9a7498bc4ebf677e4cb9bdce1fe4197ddb7e529f1ef44e1ff94f",
+          "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv6/det/PP-OCRv6_det_small.onnx"
+        },
+        {
+          "path": "ch_ppocr_mobile_v2.0_cls_mobile.onnx",
+          "size": 585532,
+          "sha256": "e47acedf663230f8863ff1ab0e64dd2d82b838fceb5957146dab185a89d6215c",
+          "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv4/cls/ch_ppocr_mobile_v2.0_cls_mobile.onnx"
+        },
+        {
+          "path": "PP-OCRv6_rec_small.onnx",
+          "size": 21234383,
+          "sha256": "6f327246b50388f3c176ae304bd95767ea6dc0c9ae92153ef8cbe210b3c14884",
+          "url": "https://www.modelscope.cn/models/RapidAI/RapidOCR/resolve/v3.10.0/onnx/PP-OCRv6/rec/PP-OCRv6_rec_small.onnx"
+        }
+      ],
+      "total_size": 31749509,
+      "downloaded": "2026-11-20"
+    },
+    "cert-domains": {
+      "kind": "data",
+      "source": "CERT Polska",
+      "url": "https://hole.cert.pl/domains/v2/domains.json",
+      "license": "CERT Polska warning list: free for any use, attribution not required; must not imply endorsement by CERT Polska",
+      "revision": "snapshot 2026-11-20T18:58:20+00:00",
+      "retrieved_at": "2026-11-20T18:58:20+00:00",
+      "http_last_modified": "Fri, 20 Nov 2026 18:55:10 GMT",
+      "entries": 126730,
+      "active_entries": 126684,
+      "root": "external",
+      "dir": "cert",
+      "files": [
+        {
+          "path": "domains.json",
+          "size": 22535283,
+          "sha256": "bd904e8db9316bf9dec8cc2ceaa38ae8839bc745a5b4c1d290e3eb61d919d9a3"
+        },
+        {
+          "path": "domains_20261120T185820Z.json",
+          "size": 22535283,
+          "sha256": "bd904e8db9316bf9dec8cc2ceaa38ae8839bc745a5b4c1d290e3eb61d919d9a3"
+        },
+        {
+          "path": "SNAPSHOT.json",
+          "size": 399,
+          "sha256": "27275482e8cf820916da91f41c501ee7e2e2caa25bc356466112a0f333f566e3"
+        }
+      ],
+      "total_size": 45070965,
+      "downloaded": "2026-11-20"
+    },
+    "psl": {
+      "kind": "data",
+      "source": "https://github.com/publicsuffix/list",
+      "url": "https://raw.githubusercontent.com/publicsuffix/list/d7d7f1fd55166aaf73ad2f526e72634490acd9c8/public_suffix_list.dat",
+      "revision": "d7d7f1fd55166aaf73ad2f526e72634490acd9c8",
+      "license": "MPL-2.0",
+      "root": "external",
+      "dir": "psl",
+      "files": [
+        {
+          "path": "public_suffix_list.dat",
+          "size": 342885,
+          "sha256": "3084c6ca4ac1dfb6e32461504b5dc494cc58ace521957e9e978ed0f870b2de94"
+        }
+      ],
+      "total_size": 342885,
+      "derived": {
+        "root": "cache",
+        "tldextract_version": "5.4.0",
+        "usage": "TLDExtract(cache_dir=$HYDRA_CACHE_DIR/tldextract, suffix_list_urls=())",
+        "files": [
+          {
+            "path": "tldextract/publicsuffix.org-tlds/906337bdfc421126a1477ade77793840.tldextract.json",
+            "size": 184383,
+            "sha256": "c456605b4c0f1c344d4bf3a1c04f175628bf7f76ecc41656786bd0c7f84d7c12"
+          },
+          {
+            "path": "tldextract/publicsuffix.org-tlds/c87d1efea5978f2a4da067c00d320360.tldextract.json",
+            "size": 184383,
+            "sha256": "c456605b4c0f1c344d4bf3a1c04f175628bf7f76ecc41656786bd0c7f84d7c12"
+          }
+        ]
+      },
+      "downloaded": "2026-11-20"
+    }
+  },
+  "total_size": 2369813089
+}

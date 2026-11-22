@@ -1,0 +1,15 @@
+{
+ "_provenance": "Hand-written from the public urlscan.io Search API documentation (results[].task/page/verdicts, total); not recorded from a real call. Values are invented.",
+ "results": [
+  {"_id": "0190aaaa-0000-0000-0000-000000000001",
+   "task": {"url": "https://energia-zysk.example/start", "domain": "energia-zysk.example", "time": "2026-10-02T10:00:00.000Z"},
+   "page": {"domain": "energia-zysk.example", "ip": "203.0.113.10", "asn": "AS64500"},
+   "verdicts": {"overall": {"malicious": true, "score": 100}}},
+  {"_id": "0190aaaa-0000-0000-0000-000000000002",
+   "task": {"url": "https://energia-zysk.example/", "domain": "energia-zysk.example", "time": "2026-10-04T08:00:00.000Z"},
+   "page": {"domain": "energia-zysk.example", "ip": "203.0.113.10", "asn": "AS64500"}}
+ ],
+ "total": 2,
+ "took": 12,
+ "has_more": false
+}

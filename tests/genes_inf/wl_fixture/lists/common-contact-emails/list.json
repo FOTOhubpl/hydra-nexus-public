@@ -1,0 +1,14 @@
+{
+ "name": "synthetic common-contact-emails",
+ "type": "regex",
+ "version": 1,
+ "description": "synthetic test fixture",
+ "matching_attributes": [
+  "email-dst",
+  "email-src",
+  "target-email"
+ ],
+ "list": [
+  "/^(security|noc|soc|abuse)\\@.*\\..*$/i"
+ ]
+}

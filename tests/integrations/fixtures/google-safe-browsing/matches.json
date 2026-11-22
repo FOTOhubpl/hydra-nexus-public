@@ -1,0 +1,7 @@
+{
+ "_provenance": "Hand-written from the public Google Safe Browsing v4 threatMatches:find documentation; not recorded from a real call.",
+ "matches": [
+  {"threatType": "SOCIAL_ENGINEERING", "platformType": "ANY_PLATFORM", "threatEntryType": "URL",
+   "threat": {"url": "http://energia-zysk.example/"}, "cacheDuration": "300s"}
+ ]
+}

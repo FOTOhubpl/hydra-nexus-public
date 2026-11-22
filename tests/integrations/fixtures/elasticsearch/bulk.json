@@ -1,0 +1,6 @@
+{
+ "_provenance": "Hand-written from the public Elasticsearch _bulk API documentation; not recorded from a real call.",
+ "took": 5,
+ "errors": false,
+ "items": [{"index": {"_index": "hydra-indicators", "_id": "1", "status": 201, "result": "created"}}]
+}

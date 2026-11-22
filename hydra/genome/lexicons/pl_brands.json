@@ -1,0 +1,1431 @@
+{
+ "about": "Brand / media / institution gazetteer for impersonation (PL-SCAM stream, 2026-11-21). group = the lexicon tuple it extends; patterns are folded; upper_only = short tokens counted only when written in capitals; domain_tokens feed the Polish domain-pattern genes (hydra/genome/domain_pl.py); official_domains are the brand's own registrable domains (a host on them is never a look-alike). Source ids resolve in pl_scam_schemes.json; 'prior' = general knowledge, not a cited source.",
+ "origin": "public",
+ "version": 1,
+ "brands": [
+  {
+   "id": "onet",
+   "name": "Onet",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "onet"
+   ],
+   "official_domains": [
+    "onet.pl"
+   ],
+   "sources": [
+    "csirt_knf_2025",
+    "cert_monthly_2026"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "money_pl",
+   "name": "Money.pl",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "moneypl"
+   ],
+   "official_domains": [
+    "money.pl"
+   ],
+   "sources": [
+    "csirt_knf_2025"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "tvn24",
+   "name": "TVN24",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "tvn24"
+   ],
+   "official_domains": [
+    "tvn24.pl",
+    "tvn.pl"
+   ],
+   "sources": [
+    "csirt_knf_2025",
+    "cert_monthly_2026"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "tvp",
+   "name": "TVP / TVP Info",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "tvpinfo",
+    "tvp"
+   ],
+   "official_domains": [
+    "tvp.pl",
+    "tvp.info"
+   ],
+   "sources": [
+    "cert_2024",
+    "cert_monthly_2026"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "polsat_news",
+   "name": "Polsat News",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "polsatnews",
+    "polsat"
+   ],
+   "official_domains": [
+    "polsatnews.pl",
+    "polsat.pl"
+   ],
+   "sources": [
+    "cert_monthly_2026"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "gazeta_pl",
+   "name": "Gazeta.pl",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "gazetapl",
+    "gazeta"
+   ],
+   "official_domains": [
+    "gazeta.pl"
+   ],
+   "sources": [
+    "cert_2024",
+    "cert_monthly_2026"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "wp_pl",
+   "name": "Wirtualna Polska",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "wiadomosciwp"
+   ],
+   "official_domains": [
+    "wp.pl"
+   ],
+   "sources": [
+    "prior"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "interia",
+   "name": "Interia",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "interia"
+   ],
+   "official_domains": [
+    "interia.pl"
+   ],
+   "sources": [
+    "prior"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "business_insider",
+   "name": "Business Insider Polska",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "businessinsider"
+   ],
+   "official_domains": [
+    "businessinsider.com.pl"
+   ],
+   "sources": [
+    "prior"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "fakt",
+   "name": "Fakt",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "fakt24"
+   ],
+   "official_domains": [
+    "fakt.pl"
+   ],
+   "sources": [
+    "prior"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "tvn",
+   "name": "TVN",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [
+    "tvn",
+    "dzien dobry tvn"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "tvn"
+   ],
+   "official_domains": [
+    "tvn.pl"
+   ],
+   "sources": [
+    "cert_monthly_2026"
+   ]
+  },
+  {
+   "id": "bankier",
+   "name": "Bankier.pl",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [
+    "bankier pl",
+    "bankier"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "bankier"
+   ],
+   "official_domains": [
+    "bankier.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "wprost",
+   "name": "Wprost",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [
+    "wprost\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "wprost"
+   ],
+   "official_domains": [
+    "wprost.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "newsweek_pl",
+   "name": "Newsweek Polska",
+   "sector": "media",
+   "group": "MEDIA_BRANDS",
+   "patterns": [
+    "newsweek\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "newsweek"
+   ],
+   "official_domains": [
+    "newsweek.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "orlen",
+   "name": "Orlen",
+   "sector": "state_company",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "orlen"
+   ],
+   "official_domains": [
+    "orlen.pl"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_2025",
+    "csirt_knf_2025"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "zus",
+   "name": "ZUS",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "zus"
+   ],
+   "official_domains": [
+    "zus.pl"
+   ],
+   "sources": [
+    "csirt_knf_2025"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "knf",
+   "name": "KNF",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "knf"
+   ],
+   "official_domains": [
+    "knf.gov.pl"
+   ],
+   "sources": [
+    "prior"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "gov_pl",
+   "name": "gov.pl / mObywatel",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "govpl",
+    "mobywatel",
+    "gov"
+   ],
+   "official_domains": [
+    "gov.pl"
+   ],
+   "sources": [
+    "cert_2025"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "pgnig",
+   "name": "PGNiG",
+   "sector": "state_company",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "pgnig"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "pgnig"
+   ],
+   "official_domains": [
+    "pgnig.pl"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_2023"
+   ]
+  },
+  {
+   "id": "pge",
+   "name": "PGE",
+   "sector": "energy",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "pge",
+    "pge obrot",
+    "polsk\\w* grup\\w* energetyczn\\w*"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "pge"
+   ],
+   "official_domains": [
+    "pge.pl",
+    "gkpge.pl"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_monthly_2026"
+   ]
+  },
+  {
+   "id": "tauron",
+   "name": "Tauron",
+   "sector": "energy",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "tauron\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "tauron"
+   ],
+   "official_domains": [
+    "tauron.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "enea",
+   "name": "Enea",
+   "sector": "energy",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "enea"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "enea"
+   ],
+   "official_domains": [
+    "enea.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "energa",
+   "name": "Energa",
+   "sector": "energy",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "energa\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "energa"
+   ],
+   "official_domains": [
+    "energa.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "baltic_pipe",
+   "name": "Baltic Pipe / Baltica",
+   "sector": "state_company",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "baltic pipe",
+    "baltica ?\\d?"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "balticpipe",
+    "baltic",
+    "baltica"
+   ],
+   "official_domains": [],
+   "sources": [
+    "cert_2023",
+    "cert_2025",
+    "csirt_knf_2025"
+   ]
+  },
+  {
+   "id": "lotos",
+   "name": "Lotos",
+   "sector": "state_company",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "lotos\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "lotos"
+   ],
+   "official_domains": [
+    "lotos.pl"
+   ],
+   "sources": [
+    "cert_2021"
+   ]
+  },
+  {
+   "id": "kghm",
+   "name": "KGHM",
+   "sector": "state_company",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "kghm"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "kghm"
+   ],
+   "official_domains": [
+    "kghm.com"
+   ],
+   "sources": [
+    "cert_2021"
+   ]
+  },
+  {
+   "id": "gpw",
+   "name": "Giełda Papierów Wartościowych",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "gpw",
+    "giel\\w* papierow wartosciowych"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "gpw"
+   ],
+   "official_domains": [
+    "gpw.pl"
+   ],
+   "sources": [
+    "csirt_knf_2025"
+   ]
+  },
+  {
+   "id": "pzu",
+   "name": "PZU",
+   "sector": "finance",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "pzu"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "pzu"
+   ],
+   "official_domains": [
+    "pzu.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "nfz",
+   "name": "NFZ",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "nfz",
+    "narodow\\w* fundusz\\w* zdrowia"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "nfz"
+   ],
+   "official_domains": [
+    "nfz.gov.pl"
+   ],
+   "sources": [
+    "cert_2025"
+   ]
+  },
+  {
+   "id": "kas",
+   "name": "KAS / e-Urząd Skarbowy",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "e urzad skarbow\\w*",
+    "krajow\\w* administracj\\w* skarbow\\w*",
+    "urzad\\w* skarbow\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "podatki",
+    "eurzad",
+    "urzadskarbowy"
+   ],
+   "official_domains": [
+    "podatki.gov.pl"
+   ],
+   "sources": [
+    "cert_2025"
+   ]
+  },
+  {
+   "id": "etoll",
+   "name": "e-TOLL",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "e toll",
+    "etoll"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "etoll"
+   ],
+   "official_domains": [
+    "etoll.gov.pl"
+   ],
+   "sources": [
+    "cert_2025"
+   ]
+  },
+  {
+   "id": "edoreczenia",
+   "name": "e-Doręczenia",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "e doreczeni\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "edoreczenia"
+   ],
+   "official_domains": [
+    "gov.pl"
+   ],
+   "sources": [
+    "cert_2025"
+   ]
+  },
+  {
+   "id": "mz",
+   "name": "Ministerstwo Zdrowia",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "ministerstw\\w* zdrowia"
+   ],
+   "upper_only": false,
+   "domain_tokens": [],
+   "official_domains": [
+    "gov.pl"
+   ],
+   "sources": [
+    "cert_2024"
+   ]
+  },
+  {
+   "id": "policja",
+   "name": "Policja / CBZC",
+   "sector": "state",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "centraln\\w* biur\\w* zwalczania cyberprzestepczosci",
+    "cbzc",
+    "komend\\w* (glown|wojewodzk|miejsk)\\w* policji"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "policja"
+   ],
+   "official_domains": [
+    "policja.pl",
+    "cbzc.policja.gov.pl"
+   ],
+   "sources": [
+    "cert_kb_consultants"
+   ]
+  },
+  {
+   "id": "wosp",
+   "name": "WOŚP",
+   "sector": "charity",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "wosp",
+    "wielk\\w* orkiestr\\w* swiateczn\\w* pomocy"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "wosp",
+    "eskarbonka"
+   ],
+   "official_domains": [
+    "wosp.org.pl"
+   ],
+   "sources": [
+    "cert_2024"
+   ]
+  },
+  {
+   "id": "pko_bp",
+   "name": "PKO Bank Polski",
+   "sector": "bank",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "pko",
+    "ipko",
+    "pkobp"
+   ],
+   "official_domains": [
+    "pkobp.pl",
+    "ipko.pl"
+   ],
+   "sources": [
+    "csirt_knf_2025",
+    "cert_monthly_2026"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "mbank",
+   "name": "mBank",
+   "sector": "bank",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "mbank"
+   ],
+   "official_domains": [
+    "mbank.pl"
+   ],
+   "sources": [
+    "prior"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "pekao",
+   "name": "Bank Pekao",
+   "sector": "bank",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "pekao"
+   ],
+   "official_domains": [
+    "pekao.com.pl"
+   ],
+   "sources": [
+    "prior"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "santander",
+   "name": "Santander Bank Polska",
+   "sector": "bank",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "santander\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "santander"
+   ],
+   "official_domains": [
+    "santander.pl"
+   ],
+   "sources": [
+    "csirt_knf_2025"
+   ]
+  },
+  {
+   "id": "alior",
+   "name": "Alior Bank",
+   "sector": "bank",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "alior\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "alior"
+   ],
+   "official_domains": [
+    "aliorbank.pl"
+   ],
+   "sources": [
+    "cert_2025"
+   ]
+  },
+  {
+   "id": "ing",
+   "name": "ING Bank Śląski",
+   "sector": "bank",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "ing bank\\w*",
+    "ing bank slask\\w*",
+    "ing\\w* bankowosc"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "ingbank"
+   ],
+   "official_domains": [
+    "ing.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "millennium",
+   "name": "Bank Millennium",
+   "sector": "bank",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "bank millennium",
+    "millennium bank"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "millennium"
+   ],
+   "official_domains": [
+    "bankmillennium.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "credit_agricole",
+   "name": "Credit Agricole",
+   "sector": "bank",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "credit agricole"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "creditagricole"
+   ],
+   "official_domains": [
+    "credit-agricole.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "blik",
+   "name": "BLIK",
+   "sector": "payment",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "blik"
+   ],
+   "official_domains": [
+    "blik.com"
+   ],
+   "sources": [
+    "cert_2021"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "przelewy24",
+   "name": "Przelewy24",
+   "sector": "payment",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "przelewy ?24"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "przelewy24",
+    "p24"
+   ],
+   "official_domains": [
+    "przelewy24.pl"
+   ],
+   "sources": [
+    "cert_2025"
+   ]
+  },
+  {
+   "id": "payu",
+   "name": "PayU",
+   "sector": "payment",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "payu"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "payu"
+   ],
+   "official_domains": [
+    "payu.pl",
+    "payu.com"
+   ],
+   "sources": [
+    "cert_2021"
+   ]
+  },
+  {
+   "id": "ecard",
+   "name": "eCard",
+   "sector": "payment",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "ecard"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "ecard"
+   ],
+   "official_domains": [
+    "ecard.pl"
+   ],
+   "sources": [
+    "cert_2021"
+   ]
+  },
+  {
+   "id": "revolut",
+   "name": "Revolut",
+   "sector": "payment",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "revolut\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "revolut"
+   ],
+   "official_domains": [
+    "revolut.com"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "inpost",
+   "name": "InPost",
+   "sector": "courier",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [],
+   "upper_only": false,
+   "domain_tokens": [
+    "inpost",
+    "paczkomat",
+    "inpolst"
+   ],
+   "official_domains": [
+    "inpost.pl"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_2025"
+   ],
+   "note": "id already in lexicons/__init__.py; only domain data added"
+  },
+  {
+   "id": "poczta_polska",
+   "name": "Poczta Polska / Pocztex",
+   "sector": "courier",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "poczt\\w* polsk\\w*",
+    "pocztex"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "pocztapolska",
+    "poczta",
+    "pocztex"
+   ],
+   "official_domains": [
+    "poczta-polska.pl",
+    "pocztex.pl"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_2025"
+   ]
+  },
+  {
+   "id": "dpd",
+   "name": "DPD",
+   "sector": "courier",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "dpd"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "dpd"
+   ],
+   "official_domains": [
+    "dpd.com.pl",
+    "dpd.com"
+   ],
+   "sources": [
+    "cert_2023"
+   ]
+  },
+  {
+   "id": "dhl",
+   "name": "DHL",
+   "sector": "courier",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "dhl"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "dhl"
+   ],
+   "official_domains": [
+    "dhl.com",
+    "dhl.pl"
+   ],
+   "sources": [
+    "cert_2023"
+   ]
+  },
+  {
+   "id": "gls",
+   "name": "GLS",
+   "sector": "courier",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "gls"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "gls"
+   ],
+   "official_domains": [
+    "gls-group.eu",
+    "gls-poland.com"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "olx",
+   "name": "OLX",
+   "sector": "marketplace",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "olx\\w*"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "olx"
+   ],
+   "official_domains": [
+    "olx.pl"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_2024",
+    "cert_2025",
+    "cert_monthly_2026"
+   ]
+  },
+  {
+   "id": "allegro",
+   "name": "Allegro / Allegro Lokalnie",
+   "sector": "marketplace",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "allegro\\w*",
+    "allegro lokalnie"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "allegro",
+    "allegrolokalnie",
+    "allegrolokalne",
+    "allegrolokainie",
+    "alebilet",
+    "allebilet",
+    "albilet"
+   ],
+   "official_domains": [
+    "allegro.pl",
+    "allegrolokalnie.pl"
+   ],
+   "sources": [
+    "cert_2023",
+    "cert_2025",
+    "cert_urls_2025",
+    "cert_monthly_2026"
+   ]
+  },
+  {
+   "id": "vinted",
+   "name": "Vinted",
+   "sector": "marketplace",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "vinted\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "vinted"
+   ],
+   "official_domains": [
+    "vinted.pl",
+    "vinted.com"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_kb_payments"
+   ]
+  },
+  {
+   "id": "otomoto",
+   "name": "OTOMOTO",
+   "sector": "marketplace",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "otomoto"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "otomoto"
+   ],
+   "official_domains": [
+    "otomoto.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "booking",
+   "name": "Booking.com",
+   "sector": "travel",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "booking com",
+    "booking"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "booking"
+   ],
+   "official_domains": [
+    "booking.com"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_2024",
+    "cert_urls_2025"
+   ]
+  },
+  {
+   "id": "blablacar",
+   "name": "BlaBlaCar",
+   "sector": "travel",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "blablacar"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "blablacar"
+   ],
+   "official_domains": [
+    "blablacar.pl"
+   ],
+   "sources": [
+    "cert_2021"
+   ]
+  },
+  {
+   "id": "netflix",
+   "name": "Netflix",
+   "sector": "subscription",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "netflix\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "netflix"
+   ],
+   "official_domains": [
+    "netflix.com"
+   ],
+   "sources": [
+    "cert_2023",
+    "cert_2024"
+   ]
+  },
+  {
+   "id": "telegram",
+   "name": "Telegram",
+   "sector": "messenger",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "telegram\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "telegram"
+   ],
+   "official_domains": [
+    "telegram.org"
+   ],
+   "sources": [
+    "cert_monthly_2026"
+   ]
+  },
+  {
+   "id": "whatsapp",
+   "name": "WhatsApp",
+   "sector": "messenger",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "whatsapp\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "whatsapp"
+   ],
+   "official_domains": [
+    "whatsapp.com"
+   ],
+   "sources": [
+    "cert_2021"
+   ]
+  },
+  {
+   "id": "lidl",
+   "name": "Lidl",
+   "sector": "retail",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "lidl\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "lidl"
+   ],
+   "official_domains": [
+    "lidl.pl"
+   ],
+   "sources": [
+    "cert_monthly_2026"
+   ]
+  },
+  {
+   "id": "aldi",
+   "name": "ALDI",
+   "sector": "retail",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "aldi"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "aldi"
+   ],
+   "official_domains": [
+    "aldi.pl"
+   ],
+   "sources": [
+    "cert_monthly_2026"
+   ]
+  },
+  {
+   "id": "biedronka",
+   "name": "Biedronka",
+   "sector": "retail",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "biedronk\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "biedronka"
+   ],
+   "official_domains": [
+    "biedronka.pl"
+   ],
+   "sources": [
+    "cert_monthly_2026"
+   ]
+  },
+  {
+   "id": "jysk",
+   "name": "JYSK",
+   "sector": "retail",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "jysk"
+   ],
+   "upper_only": true,
+   "domain_tokens": [
+    "jysk"
+   ],
+   "official_domains": [
+    "jysk.pl"
+   ],
+   "sources": [
+    "cert_monthly_2026"
+   ]
+  },
+  {
+   "id": "zalando",
+   "name": "Zalando",
+   "sector": "retail",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "zalando"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "zalando"
+   ],
+   "official_domains": [
+    "zalando.pl"
+   ],
+   "sources": [
+    "csirt_knf_2025"
+   ]
+  },
+  {
+   "id": "ceneo",
+   "name": "Ceneo",
+   "sector": "retail",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "ceneo"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "ceneo"
+   ],
+   "official_domains": [
+    "ceneo.pl"
+   ],
+   "sources": [
+    "csirt_knf_2025"
+   ]
+  },
+  {
+   "id": "reverb",
+   "name": "Reverb",
+   "sector": "retail",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "reverb"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "reverb"
+   ],
+   "official_domains": [
+    "reverb.com"
+   ],
+   "sources": [
+    "csirt_knf_2025"
+   ]
+  },
+  {
+   "id": "rossmann",
+   "name": "Rossmann",
+   "sector": "retail",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "rossmann"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "rossmann"
+   ],
+   "official_domains": [
+    "rossmann.pl"
+   ],
+   "sources": [
+    "prior"
+   ]
+  },
+  {
+   "id": "tesla",
+   "name": "Tesla",
+   "sector": "foreign_company",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "tesla"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "tesla"
+   ],
+   "official_domains": [
+    "tesla.com"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_2023"
+   ]
+  },
+  {
+   "id": "cd_projekt",
+   "name": "CD Projekt RED",
+   "sector": "company",
+   "group": "INSTITUTION_BRANDS",
+   "patterns": [
+    "cd projekt\\w*"
+   ],
+   "upper_only": false,
+   "domain_tokens": [
+    "cdprojekt"
+   ],
+   "official_domains": [
+    "cdprojekt.com"
+   ],
+   "sources": [
+    "cert_2021"
+   ]
+  }
+ ]
+}

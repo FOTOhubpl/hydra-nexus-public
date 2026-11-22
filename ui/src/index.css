@@ -1,0 +1,826 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens (docs/ui/DESIGN_2027.md). Layered surfaces with soft depth: canvas < card < floating chrome.
+ * No background textures, no decorative gradients. Every colour used by components comes from here.
+ * New tokens are written in OKLCH (perceptual lightness steps); the older hex values are kept as measured.
+ */
+@theme {
+  --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono Variable", "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Dense type scale (analyst tool, not a marketing page). */
+  --text-2xs: 10px;
+  --text-2xs--line-height: 14px;
+  --text-xs: 11px;
+  --text-xs--line-height: 16px;
+  --text-sm: 12px;
+  --text-sm--line-height: 18px;
+  --text-base: 13px;
+  --text-base--line-height: 20px;
+  --text-lg: 15px;
+  --text-lg--line-height: 22px;
+  --text-xl: 18px;
+  --text-xl--line-height: 26px;
+  --text-2xl: 22px;
+  --text-2xl--line-height: 30px;
+
+  /* Surfaces (light analyst workstation, DESIGN.md §3). */
+  --color-canvas: #f4f5f7;
+  --color-panel: #ffffff;
+  --color-raised: #fafbfc;
+  --color-hover: #f0f2f5;
+  --color-active: #e6eaf0;
+
+  /* Lines. */
+  --color-line: #e3e6ea;
+  --color-line-strong: #cdd2d9;
+
+  /* Text (all >= 4.5:1 on panel). */
+  --color-fg: #0f1419;
+  --color-muted: #3f4752;
+  --color-subtle: #5f6874;
+
+  /* Semantic chrome. */
+  --color-accent: #0b5cad;
+  --color-accent-strong: #0b5cad;
+  --color-info: #0b5cad;
+  --color-ok: #0a7d0a;
+  --color-warn: #8a5a00;
+  --color-err: #d03b3b;
+
+  /* Evidence semantics: for / against / unknown / abstain. */
+  --color-for: #2a78d6;
+  --color-for-soft: #e3eefb;
+  --color-against: #e34948;
+  --color-against-soft: #fce8e8;
+  --color-unknown: #a6abb3;
+  --color-abstain: #fab219;
+  --color-abstain-ink: #7a4f00;
+  --color-abstain-soft: #fff5dc;
+
+  /* Soft depth (2027 refresh): cards sit on the canvas, floating chrome (sidebar, top bar) sits above cards. */
+  --color-accent-soft: oklch(0.95 0.025 250);
+  --color-chrome: oklch(1 0 0 / 0.82);
+  --color-chrome-strong: oklch(1 0 0 / 0.94);
+  --shadow-card: 0 1px 2px 0 oklch(0.25 0.02 260 / 0.05), 0 2px 10px -4px oklch(0.25 0.02 260 / 0.08);
+  --shadow-float: 0 1px 2px 0 oklch(0.25 0.02 260 / 0.06), 0 16px 40px -16px oklch(0.25 0.02 260 / 0.22);
+  --ease-out-soft: cubic-bezier(0.2, 0.8, 0.2, 1);
+  /* Cards and tables (2027 cards refresh): same radius family as the floating sidebar (rounded-2xl). */
+  --radius-card: 0.875rem;
+  --shadow-card-hover: 0 1px 2px 0 oklch(0.25 0.02 260 / 0.06), 0 10px 28px -12px oklch(0.25 0.02 260 / 0.2);
+  --color-card-line: oklch(0.25 0.02 260 / 0.09);
+
+  /* Gene families (always paired with their text label). Validated with the dataviz validator
+     (light #ffffff / dark #111418), stacking order NAR, TXT, META, ID, INF, VIS. */
+  --color-fam-vis: #6250d6;
+  --color-fam-txt: #1baf7a;
+  --color-fam-id: #e87ba4;
+  --color-fam-inf: #008300;
+  --color-fam-nar: #eb6834;
+  --color-fam-meta: #eda100;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  html {
+    color-scheme: light;
+  }
+
+  /* hallmark Floor 4: no horizontal page scroll from wide tables/graphs. */
+  html,
+  body {
+    overflow-x: clip;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+    min-width: 0;
+  }
+
+  button:not(:disabled):active,
+  a:active {
+    filter: brightness(0.94);
+  }
+
+  /* hallmark Floor 7: every animation has a reduced-motion fallback. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-canvas);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--text-base--line-height);
+    font-feature-settings: "cv11", "ss01", "tnum";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-accent) 35%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+    /* the ring appears instantly even on elements with transition-colors */
+    transition-property: none !important;
+  }
+
+  :disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
+  /* Thin, flat scrollbars that match the surfaces. */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-line-strong) transparent;
+  }
+}
+
+/* Align @react-sigma/core controls with the surfaces. */
+:root {
+  --sigma-background-color: var(--color-canvas);
+  --sigma-controls-background-color: var(--color-raised);
+  --sigma-controls-background-color-hover: var(--color-hover);
+  --sigma-controls-border-color: var(--color-line);
+  --sigma-controls-color: var(--color-fg);
+}
+
+/* Indeterminate progress sweep (job running, no measurable progress). */
+@theme {
+  --animate-indeterminate: indeterminate 1.2s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  @keyframes drawer-in {
+    from {
+      opacity: 0;
+      transform: translateX(-12px);
+    }
+  }
+
+  @keyframes sheet-in {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+  }
+
+  @keyframes rail-in {
+    from {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(-6px) scale(0.98);
+    }
+  }
+
+  @keyframes indeterminate {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(300%);
+    }
+  }
+}
+
+/* Abstain hatch (DESIGN.md: abstain is never drawn like reject). */
+.hatch-abstain {
+  background-image: repeating-linear-gradient(45deg, var(--color-abstain) 0 3px, var(--color-abstain-soft) 3px 7px);
+}
+
+/* Dark mode: selected steps, not an automatic flip (DESIGN.md §3 dark column, dataviz dark steps). */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-canvas: #0b0d10;
+  --color-panel: #111418;
+  --color-raised: #161a1f;
+  --color-hover: #1d2228;
+  --color-active: #232931;
+  --color-line: #242a31;
+  --color-line-strong: #333a43;
+  --color-fg: #e6e8eb;
+  --color-muted: #a3acb6;
+  --color-subtle: #8a939d;
+  --color-accent: #4c9ffe;
+  --color-accent-strong: #2f7fe0;
+  --color-info: #4c9ffe;
+  --color-ok: #3fb950;
+  --color-warn: #d29922;
+  --color-err: #f0706f;
+  --color-for: #3987e5;
+  --color-for-soft: #16263b;
+  --color-against: #e66767;
+  --color-against-soft: #3a1d1f;
+  --color-unknown: #5d646d;
+  --color-abstain: #fab219;
+  --color-abstain-ink: #fbd27a;
+  --color-abstain-soft: #33290f;
+  --color-fam-vis: #9085e9;
+  --color-fam-txt: #199e70;
+  --color-fam-id: #d55181;
+  --color-fam-inf: #0ca30c;
+  --color-fam-nar: #d95926;
+  --color-fam-meta: #c98500;
+  --color-accent-soft: oklch(0.3 0.06 255);
+  --color-chrome: oklch(0.2 0.008 255 / 0.82);
+  --color-chrome-strong: oklch(0.2 0.008 255 / 0.95);
+  --shadow-card: 0 0 0 1px oklch(1 0 0 / 0.02), 0 2px 10px -4px oklch(0 0 0 / 0.5);
+  --shadow-float: inset 0 1px 0 0 oklch(1 0 0 / 0.04), 0 18px 44px -18px oklch(0 0 0 / 0.7);
+  --shadow-card-hover: inset 0 1px 0 0 oklch(1 0 0 / 0.05), 0 12px 30px -14px oklch(0 0 0 / 0.75);
+  --color-card-line: oklch(1 0 0 / 0.08);
+}
+
+/* Focus rings appear instantly: transition-colors must not animate the outline (hallmark 15). Unlayered, so it
+   overrides the Tailwind utility. */
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+}
+
+/* Live delta highlight on a dashboard card / KPI (bento.tsx useFlash). Reduced motion keeps the static ring only. */
+.live-flash {
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--color-accent) 45%, transparent), var(--shadow-card);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .live-flash {
+    animation: live-flash 1.6s var(--ease-out-soft);
+  }
+}
+@keyframes live-flash {
+  0% {
+    background-color: var(--color-accent-soft);
+  }
+  100% {
+    background-color: var(--color-panel);
+  }
+}
+
+/* Glass chrome falls back to opaque under prefers-reduced-transparency (DESIGN_2027 §6). */
+@media (prefers-reduced-transparency: reduce) {
+  [data-testid="top-bar"] {
+    background-color: var(--color-panel);
+    backdrop-filter: none;
+  }
+}
+
+/*
+ * Shared card surface and table styling (2027 cards refresh, docs/ui/UI_LOG.md 2026-11-22). One surface for every
+ * dashboard card, panel and KPI tile: opaque panel, 1px hairline, layered card shadow, card radius. `.surface-card`
+ * plus `.surface-hover` lifts interactive cards (motion-safe only). Unlayered component classes would beat utilities,
+ * so they live in @layer components and page utilities (padding, radius overrides) still win.
+ */
+@layer components {
+  .surface-card {
+    background-color: var(--color-panel);
+    border: 1px solid var(--color-card-line);
+    border-radius: var(--radius-card);
+    box-shadow: var(--shadow-card);
+  }
+  .surface-hover {
+    transition-property: border-color, box-shadow, transform;
+    transition-duration: 160ms;
+    transition-timing-function: var(--ease-out-soft);
+  }
+  .surface-hover:hover {
+    border-color: var(--color-line-strong);
+    box-shadow: var(--shadow-card-hover);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .surface-hover:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  /* Sticky table header with a blurred chrome background (falls back to opaque, see reduced transparency). */
+  .table-head-blur {
+    background-color: var(--color-chrome-strong);
+    -webkit-backdrop-filter: saturate(1.4) blur(8px);
+    backdrop-filter: saturate(1.4) blur(8px);
+  }
+}
+
+/* Plain <table> elements in pages: tabular figures, muted header, hover row highlight, hairline dividers. Base layer,
+   so any utility on the element wins. */
+@layer base {
+  table {
+    font-variant-numeric: tabular-nums;
+  }
+  thead th {
+    font-weight: 600;
+    color: var(--color-subtle);
+  }
+  tbody > tr {
+    transition: background-color 120ms var(--ease-out-soft);
+  }
+  tbody > tr:hover {
+    background-color: color-mix(in oklch, var(--color-hover) 70%, transparent);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .table-head-blur {
+    background-color: var(--color-raised);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/*
+ * "Jak to działa" explainer (pages/task/HowExplainer.tsx, docs/ui/UI_LOG.md 2026-11-22 UI-HOW): glass bento cards
+ * with a gradient hairline and a pointer spotlight, a pipeline flow with flowing dashes and a travelling particle.
+ * Motion is transform / opacity only, runs only under prefers-reduced-motion: no-preference and pauses off screen.
+ * prefers-reduced-transparency: opaque panels, no blur.
+ */
+@layer components {
+  .how-glass,
+  .how-card {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid transparent;
+    background:
+      linear-gradient(color-mix(in oklch, var(--color-panel) 84%, transparent), color-mix(in oklch, var(--color-panel) 84%, transparent)) padding-box,
+      linear-gradient(140deg, color-mix(in oklch, var(--color-accent) 42%, var(--color-card-line)), var(--color-card-line) 38%, var(--color-card-line) 66%, color-mix(in oklch, var(--color-fam-vis) 34%, var(--color-card-line))) border-box;
+    box-shadow: var(--shadow-card);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    backdrop-filter: blur(14px) saturate(1.3);
+  }
+  .how-card {
+    border-radius: var(--radius-card);
+    transition-property: box-shadow, transform;
+    transition-duration: 200ms;
+    transition-timing-function: var(--ease-out-soft);
+  }
+  .how-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(380px circle at var(--mx, 30%) var(--my, 0%), color-mix(in oklch, var(--color-accent) 13%, transparent), transparent 65%);
+    transition: opacity 220ms var(--ease-out-soft);
+  }
+  .how-card:hover::before,
+  .how-card[data-active="true"]::before {
+    opacity: 1;
+  }
+  .how-card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+  .how-card[data-active="true"] {
+    box-shadow: 0 0 0 1.5px color-mix(in oklch, var(--color-accent) 60%, transparent), var(--shadow-card-hover);
+  }
+  .how-card:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .how-card:hover {
+      transform: translateY(-2px);
+    }
+  }
+
+  .how-hero {
+    border: 1px solid var(--color-card-line);
+    background:
+      radial-gradient(60% 80% at 0% 0%, color-mix(in oklch, var(--color-accent) 16%, transparent), transparent 70%),
+      radial-gradient(50% 70% at 100% 0%, color-mix(in oklch, var(--color-fam-vis) 14%, transparent), transparent 70%),
+      radial-gradient(45% 60% at 80% 100%, color-mix(in oklch, var(--color-fam-txt) 10%, transparent), transparent 70%),
+      var(--color-panel);
+    box-shadow: var(--shadow-card);
+  }
+
+  .how-guard {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.35rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-raised);
+    padding: 0.15rem 0.55rem;
+    font-size: 0.6875rem;
+    line-height: 1.1rem;
+    color: var(--color-muted);
+  }
+  .how-guard > svg {
+    color: var(--color-ok);
+    flex: none;
+    margin-top: 0.2rem;
+  }
+
+  .how-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    height: 2rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-line);
+    background: var(--color-panel);
+    padding: 0 0.8rem;
+    color: var(--color-fg);
+    transition-property: border-color, box-shadow, background-color, transform;
+    transition-duration: 160ms;
+    transition-timing-function: var(--ease-out-soft);
+  }
+  .how-chip:hover {
+    border-color: var(--chip);
+  }
+  .how-chip[aria-pressed="true"] {
+    border-color: var(--chip);
+    background: color-mix(in oklch, var(--chip) 12%, var(--color-panel));
+    box-shadow: 0 0 0 1px var(--chip);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .how-chip:active {
+      transform: scale(0.97);
+    }
+  }
+
+  /* flow: nodes */
+  .how-node {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-radius: 0.9rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-panel);
+    padding: 0.6rem 0.7rem;
+    color: var(--color-fg);
+    transition-property: border-color, box-shadow, transform;
+    transition-duration: 180ms;
+    transition-timing-function: var(--ease-out-soft);
+  }
+  .how-node:hover {
+    border-color: var(--color-line-strong);
+  }
+  .how-node[data-active="true"] {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--color-accent) 20%, transparent), var(--shadow-card-hover);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .how-node[data-active="true"] {
+      transform: translateY(-2px);
+    }
+  }
+  .how-node-icon {
+    display: inline-flex;
+    width: 2.25rem;
+    height: 2.25rem;
+    flex: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.7rem;
+    border: 1px solid var(--color-line);
+    background: var(--color-raised);
+    color: var(--color-muted);
+    transition-property: color, background-color, border-color;
+    transition-duration: 180ms;
+  }
+  .how-node[data-done="true"] .how-node-icon {
+    color: var(--color-accent);
+  }
+  .how-node[data-active="true"] .how-node-icon,
+  .how-node-icon[data-active="true"] {
+    border-color: transparent;
+    background: var(--color-accent);
+    color: var(--color-panel);
+  }
+
+  /* flow: connectors (dashes slide by one period, the dot travels the whole link) */
+  .how-link {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    --link: var(--color-line-strong);
+  }
+  .how-link[data-on="true"] {
+    --link: var(--color-accent);
+  }
+  .how-link-x {
+    flex: 1 1 0;
+    min-width: 1.25rem;
+    height: 14px;
+  }
+  .how-link-y {
+    width: 14px;
+    height: 26px;
+    margin-left: calc(0.7rem + 1.125rem - 7px);
+  }
+  .how-link-dash {
+    position: absolute;
+  }
+  .how-link-x .how-link-dash {
+    left: 0;
+    top: 6px;
+    height: 2px;
+    width: calc(100% + 16px);
+    background: repeating-linear-gradient(90deg, var(--link) 0 8px, transparent 8px 16px);
+  }
+  .how-link-y .how-link-dash {
+    left: 6px;
+    top: 0;
+    width: 2px;
+    height: calc(100% + 16px);
+    background: repeating-linear-gradient(180deg, var(--link) 0 8px, transparent 8px 16px);
+  }
+  .how-link-dot {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+  .how-link-dot > span {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: var(--color-accent);
+    box-shadow: 0 0 10px 2px color-mix(in oklch, var(--color-accent) 55%, transparent);
+  }
+  .how-link-x .how-link-dot > span {
+    right: 0;
+    top: 3px;
+  }
+  .how-link-y .how-link-dot > span {
+    bottom: 0;
+    left: 3px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .how-link-x .how-link-dash {
+      animation: how-dash-x 0.9s linear infinite;
+    }
+    .how-link-y .how-link-dash {
+      animation: how-dash-y 0.9s linear infinite;
+    }
+    .how-link[data-on="true"] .how-link-dot {
+      animation: how-travel-x 2.2s var(--ease-out-soft) infinite;
+    }
+    .how-link-y[data-on="true"] .how-link-dot {
+      animation-name: how-travel-y;
+    }
+    .how-flow[data-paused="true"] .how-anim {
+      animation-play-state: paused;
+    }
+  }
+}
+
+@keyframes how-dash-x {
+  to {
+    transform: translateX(-16px);
+  }
+}
+@keyframes how-dash-y {
+  to {
+    transform: translateY(-16px);
+  }
+}
+@keyframes how-travel-x {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  15%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+}
+@keyframes how-travel-y {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  15%,
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .how-glass,
+  .how-card {
+    background:
+      linear-gradient(var(--color-panel), var(--color-panel)) padding-box,
+      linear-gradient(var(--color-card-line), var(--color-card-line)) border-box;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+  .how-card::before {
+    display: none;
+  }
+}
+
+/*
+ * Login and forced password change, flat design (pages/auth/*, docs/ui/UI_LOG.md 2026-11-22 UI-LOGIN v3): warm
+ * off-white / near-black column, flat inputs, black (light) or white (dark) pill button, grey notice cards with a
+ * red icon circle. No glass, no glows. Motion (scene crossfade, slow scene zoom, typewriter caret, underline draw)
+ * runs only under prefers-reduced-motion: no-preference.
+ */
+.login-root {
+  --lg-bg: #faf9f7;
+  --lg-fg: #141414;
+  --lg-muted: #5c5955;
+  --lg-faint: #b9b5af;
+  --lg-line: #e3e0db;
+  --lg-line-hover: #c9c5bf;
+  --lg-input: #ffffff;
+  --lg-notice: #efede9;
+  --lg-pill: #efede9;
+  --lg-pill-hover: #e5e2dd;
+  --lg-btn-bg: #141414;
+  --lg-btn-fg: #ffffff;
+  --lg-btn-hover: #2e2e2e;
+  --lg-red: #d93a2f;
+  --lg-focus: #141414;
+  --lg-link: #141414;
+  --lg-caps-bg: #fbecc8;
+  --lg-caps-fg: #6e4a00;
+  background: var(--lg-bg);
+  color: var(--lg-fg);
+}
+:root[data-theme="dark"] .login-root {
+  --lg-bg: #0f0f10;
+  --lg-fg: #f2f1ee;
+  --lg-muted: #a9a6a1;
+  --lg-faint: #55534f;
+  --lg-line: #2c2c2e;
+  --lg-line-hover: #45454a;
+  --lg-input: #161617;
+  --lg-notice: #1d1d1f;
+  --lg-pill: #1f1f21;
+  --lg-pill-hover: #2a2a2d;
+  --lg-btn-bg: #f2f1ee;
+  --lg-btn-fg: #111111;
+  --lg-btn-hover: #ffffff;
+  --lg-red: #ef5a4c;
+  --lg-focus: #f2f1ee;
+  --lg-link: #f2f1ee;
+  --lg-caps-bg: #3a2e12;
+  --lg-caps-fg: #f5cf7a;
+}
+.login-root :focus-visible {
+  outline-color: var(--lg-focus);
+}
+.login-muted {
+  color: var(--lg-muted);
+}
+.login-faint {
+  color: var(--lg-faint);
+}
+.login-input {
+  background: var(--lg-input);
+  border-color: var(--lg-line);
+  color: var(--lg-fg);
+}
+.login-input::placeholder {
+  color: var(--lg-muted);
+  opacity: 1;
+}
+.login-input:hover {
+  border-color: var(--lg-line-hover);
+}
+.login-input:focus-visible {
+  border-color: var(--lg-fg);
+  outline-color: var(--lg-focus);
+}
+.login-input[aria-invalid="true"] {
+  border-color: var(--lg-red);
+}
+.login-icon-btn {
+  color: var(--lg-muted);
+}
+.login-icon-btn:hover {
+  color: var(--lg-fg);
+  background: var(--lg-pill);
+}
+.login-pill {
+  background: var(--lg-pill);
+  color: var(--lg-fg);
+}
+.login-pill:hover {
+  background: var(--lg-pill-hover);
+}
+.login-link {
+  color: var(--lg-link);
+}
+.login-check {
+  accent-color: var(--lg-fg);
+}
+.login-caps {
+  background: var(--lg-caps-bg);
+  color: var(--lg-caps-fg);
+}
+.login-notice {
+  background: var(--lg-notice);
+  color: var(--lg-fg);
+}
+.login-notice-icon {
+  background: var(--lg-red);
+  color: #ffffff;
+}
+.login-seg-off {
+  background: var(--lg-line);
+}
+.login-primary {
+  background: var(--lg-btn-bg);
+  color: var(--lg-btn-fg);
+  transition: background-color 140ms var(--ease-out-soft);
+}
+.login-primary:not(:disabled):hover {
+  background: var(--lg-btn-hover);
+}
+.login-primary:focus-visible {
+  outline-color: var(--lg-focus);
+}
+.login-primary:disabled:not(.login-primary-done) {
+  background: var(--lg-pill);
+  color: var(--lg-muted);
+}
+.login-headline {
+  color: var(--lg-fg);
+}
+
+/* Scene carousel: stacked scenes, the active one fades in (and zooms very slowly when motion is allowed). */
+.login-scene {
+  opacity: 0;
+  transition: opacity 900ms var(--ease-out-soft);
+}
+.login-scene-on {
+  opacity: 1;
+}
+.login-underline path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.login-underline-on path {
+  stroke-dashoffset: 0;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .login-scene svg {
+    transform-origin: 50% 50%;
+    transition: transform 7s linear;
+  }
+  .login-scene-on svg {
+    transform: scale(1.04);
+  }
+  .login-underline-on path {
+    transition: stroke-dashoffset 520ms var(--ease-out-soft);
+  }
+  .login-caret {
+    animation: login-caret 1s steps(1) infinite;
+  }
+}
+@keyframes login-caret {
+  50% {
+    opacity: 0;
+  }
+}
+/* Data chips and the legend inside the scenes are too small to read on the short phone banner. */
+@media (max-width: 899px) {
+  .login-art-chip {
+    display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .login-scene {
+    transition: none;
+  }
+}

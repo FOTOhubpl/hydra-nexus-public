@@ -1,0 +1,11 @@
+{
+ "_provenance": "Hand-written from the public VirusTotal API v3 documentation; not recorded from a real call. Values are invented.",
+ "data": {
+  "id": "example.com",
+  "type": "domain",
+  "attributes": {
+   "last_analysis_stats": {"harmless": 66, "malicious": 0, "suspicious": 0, "undetected": 26, "timeout": 0},
+   "reputation": 0
+  }
+ }
+}

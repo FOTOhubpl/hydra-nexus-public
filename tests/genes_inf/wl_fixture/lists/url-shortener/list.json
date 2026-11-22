@@ -1,0 +1,10 @@
+{
+ "name": "synthetic url-shortener",
+ "type": "hostname",
+ "version": 1,
+ "description": "test fixture",
+ "list": [
+  "bit.ly",
+  "tinyurl.com"
+ ]
+}

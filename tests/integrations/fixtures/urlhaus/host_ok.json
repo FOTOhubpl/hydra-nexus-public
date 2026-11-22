@@ -1,0 +1,13 @@
+{
+ "_provenance": "Hand-written from the public URLhaus API documentation (POST /v1/host/ response); not recorded from a real call. Values are invented.",
+ "query_status": "ok",
+ "urlhaus_reference": "https://urlhaus.abuse.ch/host/energia-zysk.example/",
+ "host": "energia-zysk.example",
+ "firstseen": "2026-10-01 09:00:00 UTC",
+ "url_count": "2",
+ "blacklists": {"spamhaus_dbl": "not listed", "surbl": "not listed"},
+ "urls": [
+  {"id": "1", "url": "http://energia-zysk.example/a.exe", "url_status": "online", "date_added": "2026-10-01 09:00:00 UTC", "threat": "malware_download", "tags": ["exe"]},
+  {"id": "2", "url": "http://energia-zysk.example/b.zip", "url_status": "offline", "date_added": "2026-10-02 09:00:00 UTC", "threat": "malware_download", "tags": null}
+ ]
+}

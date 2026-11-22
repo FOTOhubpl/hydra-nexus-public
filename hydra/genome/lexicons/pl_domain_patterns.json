@@ -1,0 +1,537 @@
+{
+ "about": "Polish scam domain-naming lexicon and TLD statistics (PL-SCAM stream, 2026-11-21). Measured on the CERT Polska warning list snapshot of 2026-11-20 (126 684 active hosts, https://hole.cert.pl/domains/v2/domains.json, sha256 bd904e8db9316bf9dec8cc2ceaa38ae8839bc745a5b4c1d290e3eb61d919d9a3) against the Tranco top-1M list downloaded 2026-11-21 18:28 UTC (https://tranco-list.eu/, zip sha256 5d30cb8637d7e8c490b9dc784f90bea836a930ff09142f30659d034a84c42e73). Only aggregate counts are stored. log2_ratio = log2(share of the TLD on the warning list / share in Tranco), add-0.5 smoothing; it compares a blocklist with a popularity list, so it is a kit-level hint, not a probability. Script: research2/pl/scripts/cert_patterns.py (server), summarised in docs/research/PL_SCAM_ECOSYSTEM.md section 5.",
+ "origin": "public",
+ "version": 1,
+ "sources": {
+  "cert_list_20261120": "https://hole.cert.pl/domains/v2/domains.json",
+  "tranco_20261121": "https://tranco-list.eu/top-1m.csv.zip",
+  "cert_urls_2025": "https://cert.pl/posts/2025/09/analiza-adresow-stron/"
+ },
+ "tld": {
+  "com": {
+   "cert_n": 32301,
+   "tranco_n": 421625,
+   "log2_ratio": -0.73
+  },
+  "shop": {
+   "cert_n": 15440,
+   "tranco_n": 5168,
+   "log2_ratio": 4.56
+  },
+  "sbs": {
+   "cert_n": 9359,
+   "tranco_n": 476,
+   "log2_ratio": 7.28
+  },
+  "cyou": {
+   "cert_n": 6224,
+   "tranco_n": 427,
+   "log2_ratio": 6.84
+  },
+  "net": {
+   "cert_n": 5818,
+   "tranco_n": 46188,
+   "log2_ratio": -0.01
+  },
+  "live": {
+   "cert_n": 4873,
+   "tranco_n": 1928,
+   "log2_ratio": 4.32
+  },
+  "site": {
+   "cert_n": 4623,
+   "tranco_n": 3377,
+   "log2_ratio": 3.43
+  },
+  "store": {
+   "cert_n": 3993,
+   "tranco_n": 1316,
+   "log2_ratio": 4.58
+  },
+  "click": {
+   "cert_n": 3793,
+   "tranco_n": 1225,
+   "log2_ratio": 4.61
+  },
+  "cfd": {
+   "cert_n": 3789,
+   "tranco_n": 679,
+   "log2_ratio": 5.46
+  },
+  "top": {
+   "cert_n": 3042,
+   "tranco_n": 4956,
+   "log2_ratio": 2.28
+  },
+  "info": {
+   "cert_n": 2994,
+   "tranco_n": 4788,
+   "log2_ratio": 2.3
+  },
+  "digital": {
+   "cert_n": 2192,
+   "tranco_n": 461,
+   "log2_ratio": 5.23
+  },
+  "lol": {
+   "cert_n": 1952,
+   "tranco_n": 867,
+   "log2_ratio": 4.15
+  },
+  "lat": {
+   "cert_n": 1913,
+   "tranco_n": 392,
+   "log2_ratio": 5.27
+  },
+  "pro": {
+   "cert_n": 1904,
+   "tranco_n": 2472,
+   "log2_ratio": 2.6
+  },
+  "org": {
+   "cert_n": 1823,
+   "tranco_n": 41653,
+   "log2_ratio": -1.53
+  },
+  "xyz": {
+   "cert_n": 1519,
+   "tranco_n": 7753,
+   "log2_ratio": 0.63
+  },
+  "pl": {
+   "cert_n": 1492,
+   "tranco_n": 9158,
+   "log2_ratio": 0.36
+  },
+  "app": {
+   "cert_n": 1440,
+   "tranco_n": 4127,
+   "log2_ratio": 1.46
+  },
+  "dev": {
+   "cert_n": 1319,
+   "tranco_n": 1764,
+   "log2_ratio": 2.56
+  },
+  "eu": {
+   "cert_n": 1238,
+   "tranco_n": 5863,
+   "log2_ratio": 0.74
+  },
+  "online": {
+   "cert_n": 1224,
+   "tranco_n": 4473,
+   "log2_ratio": 1.11
+  },
+  "mom": {
+   "cert_n": 993,
+   "tranco_n": 183,
+   "log2_ratio": 5.42
+  },
+  "cc": {
+   "cert_n": 925,
+   "tranco_n": 6731,
+   "log2_ratio": 0.12
+  },
+  "icu": {
+   "cert_n": 749,
+   "tranco_n": 464,
+   "log2_ratio": 3.67
+  },
+  "autos": {
+   "cert_n": 631,
+   "tranco_n": 95,
+   "log2_ratio": 5.71
+  },
+  "rest": {
+   "cert_n": 611,
+   "tranco_n": 143,
+   "log2_ratio": 5.07
+  },
+  "de": {
+   "cert_n": 595,
+   "tranco_n": 30935,
+   "log2_ratio": -2.72
+  },
+  "help": {
+   "cert_n": 585,
+   "tranco_n": 143,
+   "log2_ratio": 5.01
+  },
+  "club": {
+   "cert_n": 458,
+   "tranco_n": 1386,
+   "log2_ratio": 1.38
+  },
+  "casa": {
+   "cert_n": 403,
+   "tranco_n": 93,
+   "log2_ratio": 5.09
+  },
+  "pics": {
+   "cert_n": 372,
+   "tranco_n": 167,
+   "log2_ratio": 4.13
+  },
+  "qpon": {
+   "cert_n": 352,
+   "tranco_n": 133,
+   "log2_ratio": 4.38
+  },
+  "skin": {
+   "cert_n": 332,
+   "tranco_n": 85,
+   "log2_ratio": 4.94
+  },
+  "space": {
+   "cert_n": 300,
+   "tranco_n": 1664,
+   "log2_ratio": 0.51
+  },
+  "hair": {
+   "cert_n": 286,
+   "tranco_n": 40,
+   "log2_ratio": 5.8
+  },
+  "bond": {
+   "cert_n": 267,
+   "tranco_n": 117,
+   "log2_ratio": 4.17
+  },
+  "biz": {
+   "cert_n": 178,
+   "tranco_n": 1985,
+   "log2_ratio": -0.5
+  },
+  "baby": {
+   "cert_n": 167,
+   "tranco_n": 146,
+   "log2_ratio": 3.17
+  },
+  "io": {
+   "cert_n": 158,
+   "tranco_n": 10704,
+   "log2_ratio": -3.1
+  },
+  "uk": {
+   "cert_n": 153,
+   "tranco_n": 34119,
+   "log2_ratio": -4.82
+  },
+  "buzz": {
+   "cert_n": 150,
+   "tranco_n": 678,
+   "log2_ratio": 0.81
+  },
+  "forum": {
+   "cert_n": 148,
+   "tranco_n": 71,
+   "log2_ratio": 4.03
+  },
+  "wiki": {
+   "cert_n": 142,
+   "tranco_n": 442,
+   "log2_ratio": 1.35
+  },
+  "co": {
+   "cert_n": 134,
+   "tranco_n": 7038,
+   "log2_ratio": -2.73
+  },
+  "vip": {
+   "cert_n": 132,
+   "tranco_n": 2061,
+   "log2_ratio": -0.98
+  },
+  "world": {
+   "cert_n": 124,
+   "tranco_n": 519,
+   "log2_ratio": 0.92
+  },
+  "work": {
+   "cert_n": 123,
+   "tranco_n": 418,
+   "log2_ratio": 1.22
+  },
+  "ink": {
+   "cert_n": 123,
+   "tranco_n": 343,
+   "log2_ratio": 1.5
+  },
+  "life": {
+   "cert_n": 121,
+   "tranco_n": 513,
+   "log2_ratio": 0.9
+  },
+  "beer": {
+   "cert_n": 114,
+   "tranco_n": 90,
+   "log2_ratio": 3.32
+  },
+  "link": {
+   "cert_n": 97,
+   "tranco_n": 830,
+   "log2_ratio": -0.11
+  },
+  "id": {
+   "cert_n": 94,
+   "tranco_n": 4658,
+   "log2_ratio": -2.64
+  },
+  "best": {
+   "cert_n": 94,
+   "tranco_n": 316,
+   "log2_ratio": 1.24
+  },
+  "fit": {
+   "cert_n": 83,
+   "tranco_n": 259,
+   "log2_ratio": 1.34
+  },
+  "homes": {
+   "cert_n": 81,
+   "tranco_n": 103,
+   "log2_ratio": 2.64
+  },
+  "me": {
+   "cert_n": 80,
+   "tranco_n": 3001,
+   "log2_ratio": -2.24
+  },
+  "surf": {
+   "cert_n": 78,
+   "tranco_n": 77,
+   "log2_ratio": 3.0
+  },
+  "vu": {
+   "cert_n": 77,
+   "tranco_n": 92,
+   "log2_ratio": 2.72
+  },
+  "cam": {
+   "cert_n": 70,
+   "tranco_n": 215,
+   "log2_ratio": 1.37
+  },
+  "luxe": {
+   "cert_n": 65,
+   "tranco_n": 3,
+   "log2_ratio": 7.21
+  },
+  "today": {
+   "cert_n": 65,
+   "tranco_n": 300,
+   "log2_ratio": 0.78
+  },
+  "blog": {
+   "cert_n": 60,
+   "tranco_n": 547,
+   "log2_ratio": -0.2
+  },
+  "love": {
+   "cert_n": 58,
+   "tranco_n": 128,
+   "log2_ratio": 1.84
+  },
+  "yoga": {
+   "cert_n": 55,
+   "tranco_n": 12,
+   "log2_ratio": 5.13
+  },
+  "tech": {
+   "cert_n": 52,
+   "tranco_n": 1553,
+   "log2_ratio": -1.91
+  },
+  "it": {
+   "cert_n": 51,
+   "tranco_n": 15078,
+   "log2_ratio": -5.21
+  },
+  "courses": {
+   "cert_n": 50,
+   "tranco_n": 34,
+   "log2_ratio": 3.53
+  },
+  "fun": {
+   "cert_n": 49,
+   "tranco_n": 941,
+   "log2_ratio": -1.27
+  },
+  "su": {
+   "cert_n": 47,
+   "tranco_n": 896,
+   "log2_ratio": -1.26
+  },
+  "cloud": {
+   "cert_n": 47,
+   "tranco_n": 2642,
+   "log2_ratio": -2.82
+  },
+  "website": {
+   "cert_n": 43,
+   "tranco_n": 322,
+   "log2_ratio": 0.09
+  },
+  "us": {
+   "cert_n": 41,
+   "tranco_n": 7336,
+   "log2_ratio": -4.49
+  },
+  "host": {
+   "cert_n": 40,
+   "tranco_n": 314,
+   "log2_ratio": 0.02
+  },
+  "art": {
+   "cert_n": 38,
+   "tranco_n": 388,
+   "log2_ratio": -0.35
+  },
+  "garden": {
+   "cert_n": 38,
+   "tranco_n": 43,
+   "log2_ratio": 2.8
+  },
+  "ru": {
+   "cert_n": 34,
+   "tranco_n": 31924,
+   "log2_ratio": -6.87
+  },
+  "ch": {
+   "cert_n": 34,
+   "tranco_n": 3649,
+   "log2_ratio": -3.74
+  },
+  "company": {
+   "cert_n": 34,
+   "tranco_n": 87,
+   "log2_ratio": 1.64
+  }
+ },
+ "tld_risky_min_log2": 3.0,
+ "service_words": {
+  "offer": [
+   "oferta",
+   "oferty",
+   "ofert",
+   "ofeta",
+   "ofera",
+   "ofertaa",
+   "ploferta",
+   "offer",
+   "okazje"
+  ],
+  "listing": [
+   "ogloszenie",
+   "ogloszenia",
+   "ogloszezenie",
+   "ogioszenie",
+   "ogoszenie",
+   "aukcja",
+   "przedmiot",
+   "produkt",
+   "produkty",
+   "podukty"
+  ],
+  "delivery": [
+   "dostawa",
+   "dostawy",
+   "dostaw",
+   "delivery",
+   "przesylka",
+   "przesylki",
+   "paczka",
+   "xpaczka",
+   "paczzka",
+   "wysylka",
+   "kurier",
+   "odbior",
+   "odbierz"
+  ],
+  "payment": [
+   "platnosc",
+   "platnosci",
+   "oplata",
+   "doplata",
+   "doplaty",
+   "pay",
+   "payment",
+   "transakcja",
+   "zaplata",
+   "blik"
+  ],
+  "order": [
+   "zamowienie",
+   "order",
+   "kupteraz",
+   "zakup",
+   "zakupy",
+   "checkout",
+   "koszyk"
+  ],
+  "verify": [
+   "weryfikacja",
+   "verify",
+   "verification",
+   "secure",
+   "login",
+   "logowanie",
+   "konto",
+   "sesja",
+   "potwierdzenie",
+   "autoryzacja"
+  ],
+  "refund": [
+   "zwrot",
+   "zwroty",
+   "refund",
+   "nadplata",
+   "podatki"
+  ],
+  "ticket": [
+   "bilet",
+   "bilety",
+   "numerbiletu",
+   "rezerwacja",
+   "reserve"
+  ],
+  "invest": [
+   "invest",
+   "inwest",
+   "inwestycje",
+   "trade",
+   "trading",
+   "profit",
+   "zysk",
+   "capital",
+   "finance",
+   "crypto",
+   "krypto",
+   "bitcoin",
+   "btc"
+  ]
+ },
+ "shapes": {
+  "brand_subdomain_foreign": "a brand token appears in a subdomain label while the registrable domain is not the brand's (example: allegrolokalnie.pl-oferta5815015105198474.cfd, cert_urls_2025)",
+  "pl_prefix": "registrable label starts with 'pl-' or 'pl' + service word, or ends with '-pl' (5.6% of listed hosts)",
+  "word_longdigits": "registrable label = word(s) + >= 4 digit id, e.g. oferta5815015105198474 (9 244 listed hosts)",
+  "brand_service": "registrable label combines a brand token and a service word (allegro+oferta 2 402, olx+oferta 674, vinted+oferta 457)",
+  "brand_typo": "a known typo variant of a brand or service word (allegrolokainie, inpolst, ogloszezenie, ofeta)",
+  "embedded_tld": "a label contains a TLD-like token of another domain ('pl-', '-com', 'www-') before the real registrable domain (www-account-booking.com, cert_urls_2025)"
+ },
+ "counts": {
+  "active_hosts": 126684,
+  "label_has_digit_pct": 25.34,
+  "label_ends_3digits_pct": 13.9,
+  "pl_prefix_or_suffix_pct": 5.59,
+  "word_longdigits_hosts": 9244,
+  "brand_service_top": {
+   "allegro+oferta": 2402,
+   "olx+oferta": 674,
+   "vinted+oferta": 457,
+   "olx+pay": 104,
+   "inpost+pay": 76
+  }
+ }
+}

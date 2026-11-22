@@ -1,0 +1,16 @@
+{
+ "name": "synthetic bank-website",
+ "type": "hostname",
+ "version": 1,
+ "description": "synthetic test fixture",
+ "matching_attributes": [
+  "domain",
+  "hostname",
+  "domain|ip",
+  "url"
+ ],
+ "list": [
+  ".synthbank-fixture.pl",
+  ".bankfixture.com"
+ ]
+}

@@ -1,0 +1,108 @@
+{
+ "format": "hydra.meta.pages.v1",
+ "synthetic": true,
+ "graph_api_version": "v26.0",
+ "pages": [
+  {
+   "query": {
+    "kind": "keyword",
+    "value": "zysk"
+   },
+   "page": 0,
+   "data": {
+    "data": [
+     {
+      "id": "syn-meta-1",
+      "page_id": "100000000000001",
+      "page_name": "Inwestycje Demo (SYNTETYCZNE)",
+      "ad_creation_time": "2026-11-21T08:00:00+0000",
+      "ad_creative_bodies": [
+       "SYNTETYCZNE: Zarabiaj 5000 zł miesięcznie! https://promo.zysk-orlen-demo.example/start Zadzwoń +48 512 000 111"
+      ],
+      "ad_creative_link_titles": [
+       "Platforma inwestycyjna"
+      ],
+      "ad_creative_link_captions": [
+       "ZYSK-ORLEN-DEMO.EXAMPLE"
+      ],
+      "ad_creative_link_descriptions": [],
+      "ad_delivery_start_time": "2026-11-21",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=syn-meta-1",
+      "publisher_platforms": [
+       "facebook",
+       "instagram"
+      ],
+      "languages": [
+       "pl"
+      ],
+      "hydra_synthetic_media": [
+       {
+        "b64": "iVBORw0KGgoAAAANSUhEUgAAAGAAAABACAIAAABqVuVZAAAEX0lEQVR4nO3aX0iTaxzA8d+7+bYym3rMMik1naaionaEU3gYVKBCdTmJwnA3/bGCqMGyKIJcZDfaHy1CrKuySRdhnQ6J4I6C6WFZTea2GnV0rlxH59z8s9d3O8wHhlTud3Xy5vdhF3uf532fsa/vn13IdaSkAFmeJMIcoUA4OoMQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEFE/HM25cCE2Px8AOKk0vqjoeUZGTGZm8e3bf5WXBwMBACjt6Hhz5oyE57O1Wo7ngwsLbzWa2bGxMpPpz7w8AFiTnPxrS0t/VdW8ywUA5RaLe3Aw9Afh+X8ePhzV65cOAsB4Z6f93r0Kq/VLZ6fx+HE2WNjYuKmi4o+sLADYolKlHj4cFASO5z+2to62t8MKBjJfucLebFWrJwcGAMBrs01bLJv27h17+nTDrl0znz5NWyy/v3gxUF0953QmVVTknD9vrKlhR0lksqKbN9/V1rI6ABAUhL7KSgCQRkeXtLSIMzPOZ8/Cg2EBv39tejonlQZFEThubWpqwO8HgESlcktl5asDBwSPh5fLS1pb5z5//trT8z/HWfwuEeZWb9y4WaWy3bjBNm2NjYoTJziJRFFTY21oAABZQoJUJgOALy9ffnzwIHxgvk43ote7X7/+fk1xZsas021Vq5f7UI/JFFtQAADy3FyP2cwG048cMdfVCR4PAAgej1mnyzh2DH6KSIFyL1601NeLs7Ns0/v+/fTwcP7Vq7MOh9dmA4Dh+vod7e0F16//UlIy0d/Pdkurrg7Mz488erTcsh6zOTotbblZl8GQqFSys8bV3c0GYxSKqaGh8D5TJlNMZiasbKBEpZKTSse7upYOWhsaNqtU7PQBgFG9vnv37smBgdxLl7JOnw7ds3g+rapKlpgY6SOjooKCwHb+ra2NveKLi9msy2BYX1oKAOt37lzuIuI4DoJBWMFAEpksW6sdunz5m3Gf3S76fD67HQBWJSTEb98uTE2NPH786uDBlEOHQvcaUezZt08aHZ26uPlDcYWF0xZL+MbEXpNGI5sV3G4IBNYkJwPAgtfLBr02W+zivZ+R5+VNW62wgoEyT550PHky53RGOjQYLG5qYt9kVVzcrMMRGgwEFrzeN2fPKk6dilEovj+Ij43N1mo/NDdHWNjV3b1No1l6+tjv3s2prY1aty60glyec+6c/c4dWMGnWPrRo+7BwQ179rDNv9XqBZ/vm338ExPvtNripiZxfj4oim81mvDUnNNprqsrunWrd/9+9hhiVxO7vj40N//b17d0EADcRuPwtWvs/XhX1zaNxlBWFl7QZTCsTkra0dYW8PtDj/n797/29sJPwdF/mEVGv6QRFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBILL/AJV4nJkRD+rfAAAAAElFTkSuQmCC"
+       }
+      ]
+     },
+     {
+      "id": "syn-meta-2",
+      "page_id": "100000000000001",
+      "page_name": "Inwestycje Demo (SYNTETYCZNE)",
+      "ad_creation_time": "2026-11-21T08:00:00+0000",
+      "ad_creative_bodies": [
+       "SYNTETYCZNE: Zarabiaj 5000 zł miesięcznie! https://promo.zysk-orlen-demo.example/start Zadzwoń +48 512 000 111"
+      ],
+      "ad_creative_link_titles": [
+       "Platforma inwestycyjna"
+      ],
+      "ad_creative_link_captions": [
+       "ZYSK-ORLEN-DEMO.EXAMPLE"
+      ],
+      "ad_creative_link_descriptions": [],
+      "ad_delivery_start_time": "2026-11-21",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=syn-meta-2",
+      "publisher_platforms": [
+       "facebook",
+       "instagram"
+      ],
+      "languages": [
+       "pl"
+      ],
+      "hydra_synthetic_media": [
+       {
+        "b64": "iVBORw0KGgoAAAANSUhEUgAAAGAAAABACAIAAABqVuVZAAAEYklEQVR4nO2aXUwTWRSAz7SMdRELrKJoFBAKCikEcElWw6aJmgCJ+lhiJBj64g9qYrRJRaMxkRrxBfwBjSHok2KJDwZ33UhI6EKCsEFcS0pbbXCxVOkuQmn56TDtZrykIRvb82Zfzpd5mHvuzL25X+85dx7KpaV1AhEZWZQ+ggTh0A5CIEEIJAiBBCGQIAQShECCEEgQAglCIEEIJAiBBCGQIAQShECCEEgQAglCIEEIJAiBBCGQIAQShECCEOK+Gb14MTc/PxEA5HKuqCg5K+vX7OyEO3eKy8v/CAZDANDZWXr27BuelxkMO3ieW1oK6fV/TUzMWyxlavXvALB58w+trT9VVw94PIsAYLOVDw9PAwDPyx49+ttk+rgyCABdXZP37zvt9oqurs8nTgyxYFNTYUXFppyc3wBAq9165Ei6IIR4nmtrG+vokEaImaCrV63sRqfbNjj4BQAcDp/NNrt//6Znzyb27Nnw4cOczTb74sUvNTWDbvdCRUXqhQu5tbXLC1MoZLduFdXVvWV2AEAQQpWV/QAQHy9vbS2ZmxOfP3eHg2ECgWBm5hq5nBPFEMdBevqaQCAIABpNSmXl1kOHXnm9glLJt7WVfPq00Nv7D8Q2xTZuXK3Vbrl508GaTU2OkydVMhlXW6tqbLQDwLp1CoVCDgAvX35++HAs/KLRmG8yjb9+vbw7VjI3JxqNVp1uW6RJLRZvQYG0efPylFarlwWPHs2sr7d6vQIAeL2C0Wg9fjwLvgvRBF26lNfQYJufF1nz3Tvf6OjstWv5Lte8w+EDgIaG0Y6OXTduFJSU/DgwMMUeq6nJWFwMPn48HmlYq9WbkREfqdds9mg0KWzX9PR4WFClShgZmQk/Y7HMZGcnQGwFaTQpcjnX3T25MtjYaNdqt7DtAwAm08e9e3sGB79cvpx35kzO1xLDVVdnpKQookwZFycTBKmQ8TzX3v4zu4qLk1mv2ewpLV0PALt3r4+URBzHhaQBYidIoZCq75UrI/+LO51+v190Ov1f82vVzp3JMzPCkyfjhw+/qqpKAwBRDB040BsfL6+qSo80ZWFhks02Gy5M7BoakiodAExPC8GgVOMBwOdbYkGHw6dWS3nHUKuVdrs0QswEnTqV/fSpy+1eiPJmKATNzcVsJUlJq1yueQAIBqVVnTv35vRplUr1jSxITOQNhh0tLe+jjNzT49Hrt6/cPvfuOevqcteulY4UpZI/fz737l0nxPAUO3Ysc3h4et++Dayp0/3p9y//mGGmpgIGw9vm5uLFRVEUpWM+3OV2L9TXW2/fLjp4sI8dQyybWH61tLzv7/93ZRAAhoamr18fZffd3ZN6/fayMnN4QLPZk5q6ur19VyAQ5HnuwYOxvr7vcYRJ6Uz/MIsOfUkjkCAEEoRAghBIEAIJQiBBCCQIgQQhkCAEEoRAghBIEAIJQiBBCCQIgQQhkCAEEoRAghBIEAIJQiBBCCQIgQQhkCAEEoRAghBIEETnP5YInJlIDvYvAAAAAElFTkSuQmCC"
+       }
+      ]
+     },
+     {
+      "id": "syn-meta-3",
+      "page_id": "100000000000077",
+      "page_name": "Sklep Demo (SYNTETYCZNE)",
+      "ad_creation_time": "2026-11-21T08:00:00+0000",
+      "ad_creative_bodies": [
+       "SYNTETYCZNE: Wyprzedaż butów, rabat 20%. https://sklep-demo.example/"
+      ],
+      "ad_creative_link_titles": [
+       "Sklep Demo"
+      ],
+      "ad_creative_link_captions": [
+       "SKLEP-DEMO.EXAMPLE"
+      ],
+      "ad_creative_link_descriptions": [],
+      "ad_delivery_start_time": "2026-11-21",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=syn-meta-3",
+      "publisher_platforms": [
+       "facebook",
+       "instagram"
+      ],
+      "languages": [
+       "pl"
+      ],
+      "hydra_synthetic_media": [
+       {
+        "b64": "iVBORw0KGgoAAAANSUhEUgAAAGAAAABACAIAAABqVuVZAAAEX0lEQVR4nO3aX0iTaxzA8d+7+bYym3rMMik1naaionaEU3gYVKBCdTmJwnA3/bGCqMGyKIJcZDfaHy1CrKuySRdhnQ6J4I6C6WFZTea2GnV0rlxH59z8s9d3O8wHhlTud3Xy5vdhF3uf532fsa/vn13IdaSkAFmeJMIcoUA4OoMQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEFE/HM25cCE2Px8AOKk0vqjoeUZGTGZm8e3bf5WXBwMBACjt6Hhz5oyE57O1Wo7ngwsLbzWa2bGxMpPpz7w8AFiTnPxrS0t/VdW8ywUA5RaLe3Aw9Afh+X8ePhzV65cOAsB4Z6f93r0Kq/VLZ6fx+HE2WNjYuKmi4o+sLADYolKlHj4cFASO5z+2to62t8MKBjJfucLebFWrJwcGAMBrs01bLJv27h17+nTDrl0znz5NWyy/v3gxUF0953QmVVTknD9vrKlhR0lksqKbN9/V1rI6ABAUhL7KSgCQRkeXtLSIMzPOZ8/Cg2EBv39tejonlQZFEThubWpqwO8HgESlcktl5asDBwSPh5fLS1pb5z5//trT8z/HWfwuEeZWb9y4WaWy3bjBNm2NjYoTJziJRFFTY21oAABZQoJUJgOALy9ffnzwIHxgvk43ote7X7/+fk1xZsas021Vq5f7UI/JFFtQAADy3FyP2cwG048cMdfVCR4PAAgej1mnyzh2DH6KSIFyL1601NeLs7Ns0/v+/fTwcP7Vq7MOh9dmA4Dh+vod7e0F16//UlIy0d/Pdkurrg7Mz488erTcsh6zOTotbblZl8GQqFSys8bV3c0GYxSKqaGh8D5TJlNMZiasbKBEpZKTSse7upYOWhsaNqtU7PQBgFG9vnv37smBgdxLl7JOnw7ds3g+rapKlpgY6SOjooKCwHb+ra2NveKLi9msy2BYX1oKAOt37lzuIuI4DoJBWMFAEpksW6sdunz5m3Gf3S76fD67HQBWJSTEb98uTE2NPH786uDBlEOHQvcaUezZt08aHZ26uPlDcYWF0xZL+MbEXpNGI5sV3G4IBNYkJwPAgtfLBr02W+zivZ+R5+VNW62wgoEyT550PHky53RGOjQYLG5qYt9kVVzcrMMRGgwEFrzeN2fPKk6dilEovj+Ij43N1mo/NDdHWNjV3b1No1l6+tjv3s2prY1aty60glyec+6c/c4dWMGnWPrRo+7BwQ179rDNv9XqBZ/vm338ExPvtNripiZxfj4oim81mvDUnNNprqsrunWrd/9+9hhiVxO7vj40N//b17d0EADcRuPwtWvs/XhX1zaNxlBWFl7QZTCsTkra0dYW8PtDj/n797/29sJPwdF/mEVGv6QRFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBEBQIQYEQFAhBgRAUCEGBILL/AJV4nJkRD+rfAAAAAElFTkSuQmCC"
+       }
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

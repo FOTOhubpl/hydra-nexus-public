@@ -1,0 +1,93 @@
+# Build the runtime image (Dockerfile target `api`: API + built UI, CPU torch, tesseract, ffmpeg) and push it to
+# ghcr.io/fotohubpl/hydra-nexus. Triggers: a tag v* (e.g. v1.0.0 -> :1.0.0, :1.0, :latest) or a manual dispatch
+# (-> :sha-<short>, optionally :latest). No model weights and no data are in the image: weights are fetched once
+# with `docker compose --profile models run --rm models` (pinned revisions + sha256, docs/MODELS.md).
+#
+# Only the docker CLI preinstalled on ubuntu-latest is used (no third-party actions); the layer cache is a
+# BuildKit registry cache next to the image (ghcr.io/fotohubpl/hydra-nexus:buildcache). GITHUB_TOKEN with
+# packages: write is the only credential.
+name: docker
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      latest:
+        description: "Also tag the manual build as :latest"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  packages: write
+
+concurrency:
+  group: docker-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  IMAGE: ghcr.io/fotohubpl/hydra-nexus
+
+jobs:
+  image:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+      - name: Free runner disk (the build stage resolves ~3 GB of wheels; the image is ~4.3 GB)
+        run: |
+          sudo rm -rf /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL || true
+          df -h /
+      - name: Tags
+        id: tags
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+          LATEST: ${{ inputs.latest }}
+        run: |
+          set -euo pipefail
+          short="${GITHUB_SHA::7}"
+          tags="-t $IMAGE:sha-$short"
+          if [ "$REF_TYPE" = "tag" ]; then
+            v="${REF_NAME#v}"
+            tags="$tags -t $IMAGE:$v"
+            case "$v" in *-*) ;; *) tags="$tags -t $IMAGE:${v%.*} -t $IMAGE:latest";; esac
+          elif [ "$LATEST" = "true" ]; then
+            tags="$tags -t $IMAGE:latest"
+          fi
+          echo "args=$tags" >> "$GITHUB_OUTPUT"
+          echo "version=${REF_NAME}" >> "$GITHUB_OUTPUT"
+          echo "$tags"
+      - name: Log in to ghcr.io
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTOR: ${{ github.actor }}
+        run: echo "$TOKEN" | docker login ghcr.io -u "$ACTOR" --password-stdin
+      - name: Build and push
+        env:
+          TAG_ARGS: ${{ steps.tags.outputs.args }}
+          VERSION: ${{ steps.tags.outputs.version }}
+        run: |
+          set -euo pipefail
+          docker buildx create --name hydra --driver docker-container --use
+          # shellcheck disable=SC2086
+          docker buildx build . --target api --platform linux/amd64 $TAG_ARGS \
+            --label org.opencontainers.image.source="https://github.com/${GITHUB_REPOSITORY}" \
+            --label org.opencontainers.image.revision="${GITHUB_SHA}" \
+            --label org.opencontainers.image.version="${VERSION}" \
+            --label org.opencontainers.image.title="HYDRA NEXUS" \
+            --label org.opencontainers.image.description="HYDRA NEXUS: offline scam-ad campaign linking (API + UI). No model weights inside." \
+            --cache-from "type=registry,ref=$IMAGE:buildcache" \
+            --cache-to "type=registry,ref=$IMAGE:buildcache,mode=max" \
+            --provenance=false \
+            --push
+      - name: Smoke test the pushed image (imports, CLI, no weights inside)
+        run: |
+          set -euo pipefail
+          ref="$IMAGE:sha-${GITHUB_SHA::7}"
+          docker pull "$ref"
+          docker run --rm --network none "$ref" hydra --help >/dev/null
+          docker run --rm --network none --entrypoint bash "$ref" -c \
+            'test -z "$(find / -xdev \( -name "*.safetensors" -o -name "*.onnx" -o -name "*.tflite" -o -name "model.bin" \) -not -path "/opt/venv/*" -not -path "/proc/*" 2>/dev/null)" && echo "no model weights outside site-packages"'
+          docker image ls "$IMAGE"

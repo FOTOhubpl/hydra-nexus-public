@@ -1,0 +1,1066 @@
+{
+ "about": "Polish scam-scheme taxonomy and lure-phrase lexicon from public sources only (PL-SCAM stream, 2026-11-21). Patterns are in the folded form of hydra.genome.txt_norm.fold; see hydra/genome/lexicons/__init__.py. Research notes: docs/research/PL_SCAM_ECOSYSTEM.md.",
+ "origin": "public",
+ "version": 1,
+ "sources": {
+  "cert_2021": {
+   "title": "CERT Polska, Raport roczny 2021 (Krajobraz bezpieczeństwa polskiego internetu)",
+   "url": "https://cert.pl/uploads/docs/Raport_CP_2021.pdf",
+   "published": "2022",
+   "licence": "CC BY 4.0 [U for 2021 edition]"
+  },
+  "cert_2022": {
+   "title": "CERT Polska, Raport roczny 2022",
+   "url": "https://cert.pl/uploads/docs/Raport_CP_2022.pdf",
+   "published": "2023",
+   "licence": "see report imprint"
+  },
+  "cert_2023": {
+   "title": "CERT Polska, Raport roczny 2023",
+   "url": "https://cert.pl/uploads/docs/Raport_CP_2023.pdf",
+   "published": "2024",
+   "licence": "see report imprint"
+  },
+  "cert_2024": {
+   "title": "CERT Polska, Raport roczny 2024",
+   "url": "https://cert.pl/uploads/docs/Raport_CP_2024.pdf",
+   "published": "2025",
+   "licence": "see report imprint"
+  },
+  "cert_2025": {
+   "title": "CERT Polska, Raport roczny 2025",
+   "url": "https://cert.pl/uploads/docs/Raport_CP_2025.pdf",
+   "published": "2026",
+   "licence": "CC BY 4.0"
+  },
+  "cert_ads_2024": {
+   "title": "CERT Polska: Oszustwa reklamowe na dużych platformach internetowych",
+   "url": "https://cert.pl/posts/2024/11/Oszustwa-reklamowe-na-duzych-platformach/",
+   "published": "2024-11-25",
+   "licence": "public web page"
+  },
+  "cert_urls_2025": {
+   "title": "CERT Polska: Jak rozpoznać fałszywe strony internetowe i uniknąć phishingu",
+   "url": "https://cert.pl/posts/2025/09/analiza-adresow-stron/",
+   "published": "2025-09-17",
+   "licence": "public web page"
+  },
+  "cert_tollfraud_2026": {
+   "title": "CERT Polska: Fałszywe reklamy i złośliwe aplikacje - analiza operacji toll fraud",
+   "url": "https://cert.pl/posts/2026/09/analiza-tollfraud/",
+   "published": "2026-09-23",
+   "licence": "public web page"
+  },
+  "cert_kb_invest": {
+   "title": "CERT Polska: Fałszywe inwestycje (baza wiedzy)",
+   "url": "https://cert.pl/falszywe-inwestycje",
+   "published": "undated, accessed 2026-11-21",
+   "licence": "public web page"
+  },
+  "cert_kb_shops": {
+   "title": "CERT Polska: Fałszywe sklepy (baza wiedzy)",
+   "url": "https://cert.pl/falszywe-sklepy",
+   "published": "undated, accessed 2026-11-21",
+   "licence": "public web page"
+  },
+  "cert_kb_consultants": {
+   "title": "CERT Polska: Fałszywi konsultanci (baza wiedzy)",
+   "url": "https://cert.pl/baza-wiedzy/falszywi-konsultanci",
+   "published": "undated, accessed 2026-11-21",
+   "licence": "public web page"
+  },
+  "cert_kb_payments": {
+   "title": "CERT Polska: Niebezpieczne płatności (baza wiedzy)",
+   "url": "https://cert.pl/baza-wiedzy/niebezpieczne-platnosci",
+   "published": "undated, accessed 2026-11-21",
+   "licence": "public web page"
+  },
+  "cert_monthly_2026": {
+   "title": "CERT Polska, Podsumowanie miesiąca 12/2025-10/2026",
+   "url": "https://cert.pl/publikacje/",
+   "published": "2026",
+   "licence": "public PDF"
+  },
+  "csirt_knf_2025": {
+   "title": "CSIRT KNF, Raport roczny 2025: Polski rynek finansowy w obliczu zagrożeń",
+   "url": "https://www.knf.gov.pl/knf/pl/komponenty/img/Raport_Roczny_CSIRT_KNF_97516.pdf",
+   "published": "2026",
+   "licence": "public-sector information [U terms]"
+  },
+  "knf_list": {
+   "title": "KNF Lista ostrzeżeń publicznych",
+   "url": "https://www.knf.gov.pl/dla_konsumenta/ostrzezenia_publiczne",
+   "published": "live page, accessed 2026-11-21",
+   "licence": "public-sector information [U terms]"
+  }
+ },
+ "schemes": [
+  {
+   "id": "marketplace_phishing",
+   "label_pl": "Fałszywy odbiór płatności (OLX / Allegro Lokalnie / Vinted)",
+   "channels": [
+    "whatsapp",
+    "sms",
+    "email",
+    "marketplace chat"
+   ],
+   "funnel": [
+    "lure",
+    "trust",
+    "capture",
+    "payment"
+   ],
+   "payment": [
+    "card+cvv",
+    "bank login",
+    "blik"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_2025",
+    "cert_kb_payments",
+    "cert_urls_2025"
+   ]
+  },
+  {
+   "id": "parcel_fee",
+   "label_pl": "Dopłata do przesyłki / bramka płatności",
+   "channels": [
+    "sms",
+    "email"
+   ],
+   "funnel": [
+    "lure",
+    "capture",
+    "payment"
+   ],
+   "payment": [
+    "card",
+    "blik",
+    "bank login"
+   ],
+   "sources": [
+    "cert_2021",
+    "cert_2023",
+    "cert_2025"
+   ]
+  },
+  {
+   "id": "gov_refund",
+   "label_pl": "Zwrot podatku / NFZ / świadczenie / e-TOLL / nadpłata za prąd",
+   "channels": [
+    "email",
+    "sms",
+    "social ad"
+   ],
+   "funnel": [
+    "lure",
+    "trust",
+    "capture",
+    "payment"
+   ],
+   "payment": [
+    "card+cvv",
+    "bank login"
+   ],
+   "sources": [
+    "cert_2025",
+    "cert_kb_payments"
+   ]
+  },
+  {
+   "id": "bank_impersonation",
+   "label_pl": "Podszycie pod bank, fałszywy konsultant, bezpieczne konto, 'na policjanta'",
+   "channels": [
+    "phone",
+    "sms",
+    "email",
+    "search ad",
+    "social ad"
+   ],
+   "funnel": [
+    "lure",
+    "trust",
+    "capture",
+    "handoff",
+    "payment"
+   ],
+   "payment": [
+    "transfer to 'bezpieczne konto'",
+    "bank login",
+    "remote access"
+   ],
+   "sources": [
+    "cert_kb_consultants",
+    "csirt_knf_2025"
+   ]
+  },
+  {
+   "id": "fake_shop",
+   "label_pl": "Fałszywy sklep internetowy",
+   "channels": [
+    "social ad",
+    "search"
+   ],
+   "funnel": [
+    "lure",
+    "trust",
+    "offer",
+    "capture",
+    "payment"
+   ],
+   "payment": [
+    "card"
+   ],
+   "sources": [
+    "cert_kb_shops",
+    "csirt_knf_2025"
+   ]
+  },
+  {
+   "id": "account_takeover",
+   "label_pl": "Przejęcie konta komunikatora / Facebooka (kod weryfikacyjny, weryfikacja wieku)",
+   "channels": [
+    "sms",
+    "facebook group"
+   ],
+   "funnel": [
+    "lure",
+    "capture"
+   ],
+   "payment": [],
+   "sources": [
+    "cert_monthly_2026",
+    "cert_2023"
+   ]
+  },
+  {
+   "id": "loan",
+   "label_pl": "Pożyczka / oddłużanie / fałszywy bank",
+   "channels": [
+    "social ad",
+    "search"
+   ],
+   "funnel": [
+    "lure",
+    "offer",
+    "capture",
+    "payment"
+   ],
+   "payment": [
+    "advance fee [U]"
+   ],
+   "sources": [
+    "knf_list"
+   ]
+  },
+  {
+   "id": "fake_charity",
+   "label_pl": "Fałszywa zbiórka (powódź, WOŚP)",
+   "channels": [
+    "social ad"
+   ],
+   "funnel": [
+    "lure",
+    "trust",
+    "payment"
+   ],
+   "payment": [
+    "card",
+    "blik [U]"
+   ],
+   "sources": [
+    "cert_2024",
+    "cert_ads_2024"
+   ]
+  }
+ ],
+ "terms": [
+  {
+   "group": "SCHEMES",
+   "id": "receive_funds",
+   "patterns": [
+    "odbierz\\w* (srodki|pieniadze|platnosc|zaplate|przelew)",
+    "odbior\\w* (srodkow|platnosci|pieniedzy)",
+    "kupujac\\w* (oplacil|zaplacil|dokonal platnosci)\\w*",
+    "otrzymal\\w* (platnosc|zaplate|srodki)",
+    "srodki (czekaja|oczekuja) na"
+   ],
+   "weight": 2.0,
+   "source": "cert_2021",
+   "scheme": "marketplace_phishing",
+   "quote": "przycisk do odebrania przelanych pieniędzy"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "safe_delivery",
+   "patterns": [
+    "bezpieczn\\w* (platnosc|zakup|transakcj|przesylk)\\w*",
+    "olx (dostawa|przesylka|platnosc)\\w*",
+    "allegro (smart|lokalnie|ochrona kupujacych)",
+    "vinted (go|wysylka)"
+   ],
+   "weight": 1.5,
+   "source": "cert_kb_payments",
+   "scheme": "marketplace_phishing"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "marketplace_brand",
+   "patterns": [
+    "olx\\w*",
+    "allegro\\w*",
+    "vinted\\w*",
+    "blablacar",
+    "booking com"
+   ],
+   "weight": 1.0,
+   "source": "cert_2021",
+   "scheme": "marketplace_phishing"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "delivery_choice",
+   "patterns": [
+    "wybral\\w* (sposob )?(dostaw|wysylk|przesylk)\\w*",
+    "kurier\\w* (odbierze|przyjedzie)",
+    "nadaj\\w* (paczk|przesylk)\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_2021",
+   "scheme": "marketplace_phishing",
+   "quote": "informacje o wybranym sposobie dostawy"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "card_form",
+   "patterns": [
+    "numer\\w* karty",
+    "data waznosci",
+    "cvv\\d?",
+    "cvc\\d?",
+    "kod\\w* (cvv|cvc|bezpieczenstwa karty)"
+   ],
+   "weight": 1.0,
+   "source": "cert_2025",
+   "scheme": "marketplace_phishing",
+   "quote": "dane karty płatniczej wraz z kodem CVV/CVC"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "seller_side",
+   "patterns": [
+    "sprzedajac\\w*",
+    "twoj\\w* (ogloszeni|przedmiot|oferta)\\w*",
+    "przedmiot\\w* (zostal )?(kupion|sprzedan|oplacon)\\w*"
+   ],
+   "weight": 0.7,
+   "source": "cert_2021",
+   "scheme": "marketplace_phishing"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "fee",
+   "patterns": [
+    "doplat\\w*",
+    "dodatkow\\w* oplat\\w*",
+    "oplat\\w* (celn|za przesylk|za dostaw|manipulacyjn)\\w*",
+    "uregul\\w* (oplat|naleznosc)\\w*"
+   ],
+   "weight": 2.0,
+   "source": "cert_2023",
+   "scheme": "parcel_fee",
+   "quote": "informacja o konieczności dopłaty za paczkę"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "parcel",
+   "patterns": [
+    "paczk\\w*",
+    "przesylk\\w*",
+    "numer\\w* (przesylki|paczki|nadania)",
+    "sledzeni\\w* przesylk\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_2023",
+   "scheme": "parcel_fee"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "fee_reason",
+   "patterns": [
+    "przekroczon\\w* wag\\w*",
+    "niepeln\\w* adres\\w*",
+    "nieobecnosc\\w* odbiorcy",
+    "clo",
+    "cla"
+   ],
+   "weight": 1.5,
+   "source": "cert_2023",
+   "scheme": "parcel_fee",
+   "quote": "przekroczonej wagi przesyłki, dodatkowej opłaty za cło, nieobecności odbiorcy w domu lub niepełnego adresu"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "courier",
+   "patterns": [
+    "inpost\\w*",
+    "paczkomat\\w*",
+    "poczt\\w* polsk\\w*",
+    "pocztex",
+    "dpd",
+    "dhl",
+    "gls",
+    "fedex",
+    "e doreczeni\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_2023",
+   "scheme": "parcel_fee",
+   "quote": "Inpost, Poczta Polska, DPD czy DHL"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "parcel_hold",
+   "patterns": [
+    "(paczk|przesylk)\\w* (zostala |jest )?(wstrzyman|zatrzyman|zablokowan)\\w*",
+    "zostanie zwrocon\\w* do nadawcy",
+    "problem\\w* z (doreczeniem|dostarczeniem)",
+    "nieudan\\w* (proba )?doreczeni\\w*"
+   ],
+   "weight": 1.5,
+   "source": "cert_2025",
+   "scheme": "parcel_fee",
+   "quote": "rzekomych problemach z doręczeniem przesyłki"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "gateway",
+   "patterns": [
+    "ecard",
+    "payu",
+    "przelewy ?24",
+    "bramk\\w* platnosc\\w*",
+    "bramk\\w* platnicz\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_2021",
+   "scheme": "parcel_fee",
+   "quote": "fałszywa bramka płatności wykorzystująca wizerunek firmy eCard"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "refund",
+   "patterns": [
+    "zwrot\\w* (podatk|nadplat|kosztow|srodkow)\\w*",
+    "nadplat\\w*",
+    "przysluguje (ci |pani |panu )?(zwrot|wyplat)\\w*",
+    "oczekujac\\w* (zwrot|wyplat)\\w*"
+   ],
+   "weight": 2.0,
+   "source": "cert_2025",
+   "scheme": "gov_refund",
+   "quote": "obietnica zwrotu podatku"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "gov_institution",
+   "patterns": [
+    "e urzad skarbow\\w*",
+    "urzad\\w* skarbow\\w*",
+    "krajow\\w* administracj\\w* skarbow\\w*",
+    "nfz",
+    "narodow\\w* fundusz\\w* zdrowia",
+    "gov pl",
+    "mobywatel",
+    "e toll",
+    "etoll",
+    "ministerstw\\w* (finansow|zdrowia|cyfryzacji)",
+    "urzad\\w* statystyczn\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_2025",
+   "scheme": "gov_refund"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "benefit",
+   "patterns": [
+    "swiadczen\\w*",
+    "dodatk\\w* (oslonow|energetyczn|weglow|osobn)\\w*",
+    "(bon|kupon)\\w* energetyczn\\w*",
+    "uprawnien\\w* do (dodatkow|swiadczen|wyplat)\\w*",
+    "dodatkow\\w* wyplat\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_2025",
+   "scheme": "gov_refund",
+   "quote": "sprawdzenie uprawnień do dodatkowych wypłat"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "national_id",
+   "patterns": [
+    "pesel\\w*",
+    "numer\\w* dowodu",
+    "dowod\\w* osobist\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_2025",
+   "scheme": "gov_refund",
+   "quote": "jedynym wymaganym krokiem jest podanie numeru PESEL"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "unpaid",
+   "patterns": [
+    "nieoplacon\\w*",
+    "nieuregulowan\\w*",
+    "zaleg\\w* (oplat|platnosc|faktur|naleznosc)\\w*",
+    "mandat\\w*",
+    "wylacz\\w* (prad|gaz)\\w*",
+    "odlaczeni\\w* (pradu|gazu)"
+   ],
+   "weight": 1.5,
+   "source": "cert_2025",
+   "scheme": "gov_refund",
+   "quote": "rzekomym nieuregulowaniu opłaty za przejazd"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "safe_account",
+   "patterns": [
+    "bezpieczn\\w* kont\\w*",
+    "specjaln\\w* kont\\w*",
+    "kont\\w* (techniczn|tymczasow|ochronn)\\w*"
+   ],
+   "weight": 2.0,
+   "source": "cert_kb_consultants",
+   "scheme": "bank_impersonation",
+   "quote": "przelać pieniądze na specjalne bezpieczne konto"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "account_alert",
+   "patterns": [
+    "zablokowan\\w* (konto|karta|karte|dostep|rachunek)",
+    "podejrzan\\w* (transakcj|logowani|operacj)\\w*",
+    "odrzucon\\w* przelew\\w*",
+    "nieautoryzowan\\w*",
+    "now\\w* (urzadzeni|sesj)\\w*",
+    "przejeci\\w* (konta|dostepu)"
+   ],
+   "weight": 1.5,
+   "source": "csirt_knf_2025",
+   "scheme": "bank_impersonation",
+   "quote": "rzekomo odrzuconym przelewie z koniecznością pilnej aktualizacji danych"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "bank_brand",
+   "patterns": [
+    "pko bp",
+    "ipko",
+    "pko bank polski",
+    "santander\\w*",
+    "alior\\w*",
+    "mbank",
+    "ing bank\\w*",
+    "bank pekao",
+    "pekao sa",
+    "millennium",
+    "credit agricole",
+    "bnp paribas",
+    "velo ?bank",
+    "bank\\w* spoldzielcz\\w*",
+    "bank\\w* pocztow\\w*"
+   ],
+   "weight": 1.0,
+   "source": "csirt_knf_2025",
+   "scheme": "bank_impersonation",
+   "quote": "PKO Bank Polski, Santander Bank Polska"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "bank_login",
+   "patterns": [
+    "logowani\\w* do (bankowosci|banku|konta bankowego)",
+    "bankowosc\\w* (elektroniczn|internetow|mobiln)\\w*",
+    "zaloguj\\w* (sie )?do (banku|bankowosci)",
+    "aktualizacj\\w* danych"
+   ],
+   "weight": 1.0,
+   "source": "csirt_knf_2025",
+   "scheme": "bank_impersonation"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "remote_access",
+   "patterns": [
+    "anydesk",
+    "teamviewer",
+    "quick ?support",
+    "rustdesk",
+    "zdaln\\w* (dostep|pulpit)\\w*",
+    "udostepni\\w* ekran\\w*",
+    "oprogramowani\\w* (do )?zdaln\\w*"
+   ],
+   "weight": 1.5,
+   "source": "cert_kb_invest",
+   "scheme": "bank_impersonation",
+   "quote": "instalacji oprogramowania udostępniającego ekran"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "police_call",
+   "patterns": [
+    "funkcjonariusz\\w*",
+    "centraln\\w* biur\\w* zwalczania cyberprzestepczosci",
+    "cbzc",
+    "policjant\\w*",
+    "pracownik\\w* (banku|dzialu bezpieczenstwa)"
+   ],
+   "weight": 1.0,
+   "source": "cert_kb_consultants",
+   "scheme": "bank_impersonation",
+   "quote": "Tym razem dzwonił policjant"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "secret_question",
+   "patterns": [
+    "nazwisk\\w* panieni\\w* matki",
+    "kod\\w* (sms|autoryzac|z sms)\\w*"
+   ],
+   "weight": 1.0,
+   "source": "csirt_knf_2025",
+   "scheme": "bank_impersonation",
+   "quote": "numer PESEL oraz nazwisko panieńskie matki"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "liquidation",
+   "patterns": [
+    "likwidacj\\w* (sklep|magazyn|firmy)\\w*",
+    "zamykamy sklep",
+    "zamkniec\\w* sklep\\w*",
+    "wyprzedaz\\w* (magazyn|calkowit|likwidac|koncow)\\w*",
+    "czyszczeni\\w* magazyn\\w*"
+   ],
+   "weight": 2.0,
+   "source": "cert_kb_shops",
+   "scheme": "fake_shop",
+   "quote": "Inna reklama informuje o likwidacji sklepu"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "trust_badges",
+   "patterns": [
+    "bezpieczne zakupy",
+    "gwarancj\\w* zwrotu (pieniedzy|srodkow)",
+    "sprawdzon\\w* sklep\\w*",
+    "darmow\\w* (dostaw|wysylk)\\w*",
+    "zwrot (do|w ciagu) \\d+ dni"
+   ],
+   "weight": 1.5,
+   "source": "cert_kb_shops",
+   "scheme": "fake_shop",
+   "quote": "„Bezpieczne zakupy”, „Gwarancja zwrotu pieniędzy” czy „Sprawdzony sklep”"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "cart",
+   "patterns": [
+    "koszyk\\w*",
+    "dodaj do koszyka",
+    "przejdz do kasy",
+    "finalizuj\\w* zamowieni\\w*",
+    "podsumowani\\w* zamowienia"
+   ],
+   "weight": 1.0,
+   "source": "cert_kb_shops",
+   "scheme": "fake_shop",
+   "quote": "stronę z koszykiem, wyszukiwarką i formularzem zamówienia"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "recent_purchases",
+   "patterns": [
+    "wlasnie kupil\\w*",
+    "(ktos|klient\\w*) z \\w+ (wlasnie )?(kupil|zamowil)\\w*",
+    "ostatni\\w* zakup\\w* (innych )?klient\\w*"
+   ],
+   "weight": 1.0,
+   "source": "csirt_knf_2025",
+   "scheme": "fake_shop",
+   "quote": "„ostatnich zakupach innych klientów”"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "deep_discount",
+   "patterns": [
+    "przecen\\w*",
+    "wyprzedaz\\w*",
+    "[5-9]\\d ?% (taniej|znizk|rabat|off)\\w*",
+    "o polowe (taniej|mniej)"
+   ],
+   "weight": 1.0,
+   "source": "cert_kb_shops",
+   "scheme": "fake_shop",
+   "quote": "przecenione o 80%"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "retail_brand",
+   "patterns": [
+    "zalando",
+    "lidl\\w*",
+    "aldi",
+    "biedronk\\w*",
+    "jysk",
+    "reverb",
+    "ceneo",
+    "rossmann",
+    "decathlon",
+    "ikea",
+    "media expert",
+    "rtv euro agd",
+    "x ?kom"
+   ],
+   "weight": 1.0,
+   "source": "cert_monthly_2026",
+   "scheme": "fake_shop"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "spam_flag",
+   "patterns": [
+    "(konto|numer)\\w* (moglo |mogl |zostalo )?(brac|bralo|uzyt\\w*) udzial\\w* w wysylc\\w* spamu",
+    "wysylc\\w* spamu"
+   ],
+   "weight": 2.0,
+   "source": "cert_monthly_2026",
+   "scheme": "account_takeover",
+   "quote": "konto użytkownika mogło brać udział w wysyłce spamu"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "verify_code",
+   "patterns": [
+    "kod\\w* weryfikacyjn\\w*",
+    "szybk\\w* weryfikacj\\w*",
+    "potwierdz\\w* (numer|tozsamosc|konto)\\w*"
+   ],
+   "weight": 1.5,
+   "source": "cert_monthly_2026",
+   "scheme": "account_takeover",
+   "quote": "kodu weryfikacyjnego wysłanego na jego numer telefonu"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "age_gate",
+   "patterns": [
+    "weryfikacj\\w* wieku",
+    "potwierdz\\w* (swoj )?wiek",
+    "tylko dla (osob )?pelnoletnich",
+    "18 ?\\+ (nagranie|wideo|film)"
+   ],
+   "weight": 1.5,
+   "source": "cert_2023",
+   "scheme": "account_takeover",
+   "quote": "Dostęp do niego mogą mieć jedynie osoby pełnoletnie"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "messenger",
+   "patterns": [
+    "telegram\\w*",
+    "whatsapp\\w*",
+    "messenger\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_monthly_2026",
+   "scheme": "account_takeover"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "loan_offer",
+   "patterns": [
+    "pozyczk\\w*",
+    "chwilowk\\w*",
+    "kredyt\\w* (bez|na|gotowkow|od reki)\\w*",
+    "gotowk\\w* od reki"
+   ],
+   "weight": 1.5,
+   "source": "knf_list",
+   "scheme": "loan"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "no_bik",
+   "patterns": [
+    "bez bik\\w*",
+    "bez (zaswiadczen|weryfikacji|sprawdzania)\\w*",
+    "dla zadluzonych",
+    "z komornikiem"
+   ],
+   "weight": 2.0,
+   "source": "knf_list",
+   "scheme": "loan"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "advance_fee",
+   "patterns": [
+    "oplat\\w* (przygotowawcz|wstepn|weryfikacyjn|aktywacyjn|ubezpieczeni)\\w*",
+    "wplac\\w* (oplate|kaucje|prowizje)",
+    "prowizj\\w* z gory"
+   ],
+   "weight": 2.0,
+   "source": "knf_list",
+   "scheme": "loan"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "debt_relief",
+   "patterns": [
+    "oddluz\\w*",
+    "konsolidacj\\w*",
+    "umorzeni\\w* (dlugu|zadluzenia)",
+    "ulg\\w* od dlugu"
+   ],
+   "weight": 1.0,
+   "source": "knf_list",
+   "scheme": "loan",
+   "quote": "Ulgaoddlugu.pl sp. z o.o."
+  },
+  {
+   "group": "SCHEMES",
+   "id": "fundraiser",
+   "patterns": [
+    "zbiork\\w*",
+    "wesprzyj\\w*",
+    "wplac\\w* (na pomoc|darowizn)\\w*",
+    "przekaz\\w* darowizn\\w*",
+    "eskarbonk\\w*",
+    "zrzutk\\w*",
+    "siepomaga"
+   ],
+   "weight": 2.0,
+   "source": "cert_2024",
+   "scheme": "fake_charity",
+   "quote": "fałszywą zbiórkę rzekomo zorganizowaną przez Wielką Orkiestrę Świątecznej Pomocy"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "disaster",
+   "patterns": [
+    "powodz\\w*",
+    "powodzian\\w*",
+    "ofiar\\w* (powodzi|pozaru|wojny|kataklizmu)",
+    "kleska\\w* zywiolow\\w*",
+    "pogorzel\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_2024",
+   "scheme": "fake_charity",
+   "quote": "motyw powodzi"
+  },
+  {
+   "group": "SCHEMES",
+   "id": "charity_brand",
+   "patterns": [
+    "wosp",
+    "wielk\\w* orkiestr\\w* swiateczn\\w* pomocy",
+    "caritas",
+    "polsk\\w* akcj\\w* humanitarn\\w*",
+    "pck"
+   ],
+   "weight": 1.0,
+   "source": "cert_2024",
+   "scheme": "fake_charity"
+  },
+  {
+   "group": "MOTIFS",
+   "id": "state_company_investment",
+   "patterns": [
+    "baltic pipe",
+    "baltica ?\\d?",
+    "orlen\\w*",
+    "pgnig",
+    "lotos\\w*",
+    "kghm",
+    "gpw",
+    "giel\\w* papierow wartosciowych",
+    "spol\\w* skarbu panstwa",
+    "spol\\w* panstwow\\w*",
+    "akcj\\w* (orlenu|pzu|kghm|pkn)"
+   ],
+   "weight": 1.0,
+   "source": "csirt_knf_2025",
+   "quote": "Orlen, ZUS czy Giełda Papierów Wartościowych ... Baltic Pipe oraz Baltica"
+  },
+  {
+   "group": "MOTIFS",
+   "id": "secret_method",
+   "patterns": [
+    "sekretn\\w* (sposob|metod)\\w*",
+    "tajn\\w* (algorytm|metod|sposob|program)\\w*",
+    "(sposob|metod)\\w* (ktory|ktora) (banki|rzad) ukrywaj\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_ads_2024",
+   "quote": "Sekretny sposób na zarabianie pieniędzy wyjawiony przez celebrytę"
+  },
+  {
+   "group": "MOTIFS",
+   "id": "celebrity_tragedy",
+   "patterns": [
+    "rzekom\\w* smierc\\w*",
+    "nie zyje",
+    "tragiczn\\w* (wypadek|smierc|wiadomosc)\\w*",
+    "trafil\\w* do szpitala",
+    "w szpitalu",
+    "pobit\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_ads_2024",
+   "quote": "pokazujące ich nagich, pobitych, w szpitalach czy po wypadkach"
+  },
+  {
+   "group": "MOTIFS",
+   "id": "fake_fundraiser",
+   "patterns": [
+    "falszyw\\w* zbiork\\w*",
+    "zbiork\\w* dla (powodzian|ofiar|poszkodowanych)",
+    "pomoc dla powodzian"
+   ],
+   "weight": 1.0,
+   "source": "cert_2024"
+  },
+  {
+   "group": "MOTIFS",
+   "id": "app_expired",
+   "patterns": [
+    "aplikacj\\w* (do )?\\w* (stracil\\w* waznosc|wygasl\\w*)",
+    "(stracil\\w* waznosc|wygasl\\w*) aplikacj\\w*",
+    "zaktualizuj aplikacj\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_tollfraud_2026",
+   "quote": "aplikacja do obsługi plików PDF straciła ważność"
+  },
+  {
+   "group": "MOTIFS",
+   "id": "no_risk_profit",
+   "patterns": [
+    "bez ryzyka",
+    "gwarantowan\\w* (dochod|zysk)\\w*",
+    "\\d[\\d ]* ?(euro|eur|zl) dziennie",
+    "inwestycj\\w* zycia"
+   ],
+   "weight": 1.0,
+   "source": "csirt_knf_2025",
+   "quote": "„otrzymuj 500 euro dziennie” czy „gwarantowany dochód”"
+  },
+  {
+   "group": "URGENCY",
+   "id": "deletion_threat",
+   "patterns": [
+    "zostan\\w* (trwale )?usunie\\w*",
+    "w ciagu (24|48|72) (godzin|h)",
+    "do konca dnia",
+    "ostatnie (wezwanie|przypomnienie)"
+   ],
+   "weight": 1.0,
+   "source": "cert_2025",
+   "quote": "ostrzeżenie o jej usunięciu w razie braku reakcji w określonym terminie"
+  },
+  {
+   "group": "URGENCY",
+   "id": "last_items",
+   "patterns": [
+    "ostatni\\w* (dostepn\\w* )?sztuk\\w*",
+    "zostal\\w* tylko \\d+"
+   ],
+   "weight": 1.0,
+   "source": "cert_kb_shops",
+   "quote": "informacja o ostatnich dostępnych sztukach"
+  },
+  {
+   "group": "PAYMENT_TERMS",
+   "id": "card_cvv",
+   "patterns": [
+    "cvv\\d?",
+    "cvc\\d?",
+    "numer\\w* karty",
+    "data waznosci karty"
+   ],
+   "weight": 1.0,
+   "source": "cert_2025",
+   "quote": "dane karty płatniczej wraz z kodem CVV/CVC"
+  },
+  {
+   "group": "PAYMENT_TERMS",
+   "id": "blik_code",
+   "patterns": [
+    "kod\\w* blik\\w*",
+    "blikiem",
+    "platnosc blik\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_2021",
+   "quote": "możliwość „płatności” BLIKIEM"
+  },
+  {
+   "group": "PAYMENT_TERMS",
+   "id": "safe_account",
+   "patterns": [
+    "bezpieczn\\w* kont\\w*",
+    "kont\\w* techniczn\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_kb_consultants"
+  },
+  {
+   "group": "PAYMENT_TERMS",
+   "id": "premium_sms",
+   "patterns": [
+    "sms premium",
+    "premium sms",
+    "oplat\\w* przez operatora",
+    "92[0-9]{3}"
+   ],
+   "weight": 1.0,
+   "source": "cert_tollfraud_2026",
+   "quote": "numerami skróconymi SMS ... 92505, 92512 i 92513"
+  },
+  {
+   "group": "HANDOFF_TERMS",
+   "id": "remote_access",
+   "patterns": [
+    "anydesk",
+    "teamviewer",
+    "quick ?support",
+    "rustdesk",
+    "zdaln\\w* pulpit\\w*",
+    "udostepni\\w* ekran\\w*"
+   ],
+   "weight": 1.0,
+   "source": "cert_kb_invest",
+   "quote": "nakłaniają do instalacji oprogramowania udostępniającego ekran"
+  },
+  {
+   "group": "HANDOFF_TERMS",
+   "id": "lead_ads_form",
+   "patterns": [
+    "formularz\\w* kontaktow\\w*",
+    "zostaw\\w* (swoje )?dane",
+    "wypelnij\\w* formularz\\w*"
+   ],
+   "weight": 0.7,
+   "source": "csirt_knf_2025",
+   "quote": "formularze wbudowane bezpośrednio w ekosystem reklamowy (tzw. Lead Ads)"
+  }
+ ]
+}

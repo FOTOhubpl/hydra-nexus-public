@@ -1,0 +1,23 @@
+[
+ {
+  "id": 8000000300,
+  "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+  "name_value": "paczka.zysk-orlen-90.example\nwww.paczka.zysk-orlen.example",
+  "entry_timestamp": "2026-11-20T04:03:00",
+  "not_before": "2026-11-20T04:03:00"
+ },
+ {
+  "id": 8000000301,
+  "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+  "name_value": "kryptowaluty.zysk-orlen-31.example\nwww.kryptowaluty.zysk-orlen.example",
+  "entry_timestamp": "2026-11-20T04:03:00",
+  "not_before": "2026-11-20T04:03:00"
+ },
+ {
+  "id": 8000000302,
+  "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+  "name_value": "nagroda.zysk-orlen-22.example\nwww.nagroda.zysk-orlen.example",
+  "entry_timestamp": "2026-11-20T04:03:00",
+  "not_before": "2026-11-20T04:03:00"
+ }
+]

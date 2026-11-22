@@ -1,0 +1,26 @@
+{
+ "name": "meta-demo",
+ "synthetic": true,
+ "interval_s": 60,
+ "description_pl": "DANE SYNTETYCZNE: demonstracja kolektora reklam Meta (META-COLLECT). Dwa odpytania: reklamy z wymyślonymi domenami .example, obrazy wygenerowane lokalnie, nowa rewizja tej samej reklamy i reklama innego reklamodawcy z tym samym obrazem. Nie pochodzą z Meta Ad Library.",
+ "watchlist": [
+  {
+   "kind": "page_id",
+   "value": "100000000000001",
+   "label": "SYNTETYCZNA strona reklamodawcy (demo)"
+  },
+  {
+   "kind": "host",
+   "value": "promo.zysk-orlen-demo.example",
+   "label": "SYNTETYCZNA kampania A (inwestycje)"
+  }
+ ],
+ "ticks": [
+  {
+   "meta-adlibrary": "t00-meta.json"
+  },
+  {
+   "meta-adlibrary": "t01-meta.json"
+  }
+ ]
+}

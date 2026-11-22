@@ -1,0 +1,17 @@
+{
+ "name": "synthetic sinkholes",
+ "type": "cidr",
+ "version": 1,
+ "description": "synthetic test fixture",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain|ip",
+  "ip-src|port",
+  "ip-dst|port"
+ ],
+ "list": [
+  "91.208.99.77",
+  "45.83.64.0/30"
+ ]
+}

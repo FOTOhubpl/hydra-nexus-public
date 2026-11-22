@@ -1,0 +1,12 @@
+# Common first names (nominative) used to recognise "First Surname" person mentions in alt/title text.
+# Public-domain name statistics knowledge; not derived from organiser data.
+Adam Adrian Agata Agnieszka Aleksander Aleksandra Alicja Andrzej Aneta Angelika Anita Anna Antoni Arkadiusz Artur
+Barbara Bartłomiej Bartosz Beata Bogdan Bogusław Bożena Cezary Czesław Damian Daniel Danuta Dariusz Dawid Dominik
+Dominika Dorota Edward Elżbieta Emilia Ewa Ewelina Filip Franciszek Grażyna Grzegorz Halina Hanna Henryk Hubert Igor
+Irena Iwona Izabela Jacek Jadwiga Jakub Jan Janina Janusz Jarosław Jerzy Joanna Jolanta Józef Julia Julian Justyna
+Kacper Kamil Kamila Karol Karolina Katarzyna Kazimierz Kinga Klaudia Konrad Krystyna Krzysztof Leszek Lucyna Łukasz
+Maciej Magdalena Maja Małgorzata Marcin Marek Maria Mariola Marian Mariusz Marta Marzena Mateusz Michał Michalina
+Mieczysław Mikołaj Milena Mirosław Monika Natalia Nikola Norbert Oliwia Oliwer Patrycja Patryk Paulina Paweł Piotr
+Przemysław Rafał Renata Robert Roman Ryszard Sebastian Sławomir Stanisław Stefan Szymon Tadeusz Teresa Tomasz Urszula
+Wanda Wiesław Wiktor Wiktoria Witold Władysław Włodzimierz Wojciech Zbigniew Zdzisław Zenon Zofia Zuzanna Zygmunt
+Donald Szymon Sławomir Radosław Borys Cristiano Lionel Robert Elon Bill Warren Jeff Mark Taylor Kylian

@@ -1,0 +1,29 @@
+{
+ "query_status": "ok",
+ "urls": [
+  {
+   "id": "70070",
+   "url": "http://portfel-doplata904.test/bins/27.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:07:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70071",
+   "url": "http://orlen-bonus766.test/bins/28.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:07:00 UTC",
+   "urlhaus_reference": null
+  }
+ ]
+}

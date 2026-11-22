@@ -1,0 +1,5 @@
+{
+ "_provenance": "Hand-written from the public Graph API ads_archive reference (data[], paging); not recorded from a real call.",
+ "data": [{"id": "100000000000001"}],
+ "paging": {"cursors": {"after": "x"}}
+}

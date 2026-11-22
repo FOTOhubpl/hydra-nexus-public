@@ -1,0 +1,274 @@
+# HYDRA NEXUS: `docker compose up -d` starts one container that serves the API and the built UI.
+# Image: ghcr.io/fotohubpl/hydra-nexus:${HYDRA_IMAGE_TAG:-latest} (`docker pull` it, or build locally with
+# `docker compose build api`; HYDRA_IMAGE overrides the repository). The image carries no model weights.
+#
+# Host networking + loopback bind: reachable only from the machine itself (remote access via an SSH tunnel).
+# Linux Docker Engine; Docker Desktop needs host networking enabled.
+# Docker Desktop (macOS/Windows) without host networking: `docker compose --profile gui-ports up -d gui` instead
+# (bridge network, port published on 127.0.0.1:${HYDRA_API_PORT:-8000} only; see the `gui` service below).
+#   UI   http://127.0.0.1:8000/          (HYDRA_UI_DIST, SPA fallback for deep links)
+#   API  http://127.0.0.1:8000/api/...   (also /health, /docs, /v1/... without the prefix)
+# Optional: `docker compose --profile preview up -d` adds a vite preview of the UI on 127.0.0.1:4173 (dev aid).
+#
+# Volumes (host paths under $HYDRA_HOST_ROOT, default ~/HydraNexus):
+#   models/  read-only, pinned weights (models.lock.json; fetch with `just models-fetch`)
+#   data/    read-only, organiser sample (data/nask/sample) + external reference data (CERT list, PSL)
+#   state-docker/  SQLite DB, content store, work files (written by the container, uid 1000)
+#   cache/linux-x86_64/  HF/tldextract caches
+#   cache/enrich/  enrichment evidence cache (RDAP/DNS/crt.sh/ASN responses), replayed offline
+#   exports/  assignment exports written by `hydra assign-batch --out /hydra/exports/...`
+#
+# Jury flow (offline after one model download): README "Uruchomienie przez jury (offline)", docs/PORTABILITY.md.
+#
+# Analyse the sample: GUI "Analizuj nowy materiał" -> "Folder na serwerze" -> /hydra/data/nask/sample, or CLI:
+#   docker compose exec api hydra analyse /hydra/data/nask/sample
+#
+# Parallel test stack: own project, image tag, port and state, so it never replaces the running stack:
+#   HYDRA_IMAGE_TAG=test HYDRA_API_PORT=8020 HYDRA_STATE_SUBDIR=state-docker-test \
+#     docker compose -p hydra-test up -d --build
+#
+# Network: offline replay is the default. Live enrichment lookups: HYDRA_ENRICH=1 HYDRA_OFFLINE=0 docker compose up -d
+#
+# CPU: os.cpu_count() inside a container reports the host's cores. HYDRA_CPU_BUDGET (default 8 here) caps the
+# cores one analyse/assign job plans for; a `--cpus`/cgroup quota lowers it further (hydra.parallel.available_cpus).
+# Bigger machine: HYDRA_CPU_BUDGET=$(nproc) docker compose ...
+x-hydra-volumes: &hydra-volumes
+  - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/models:/hydra/models:ro
+  - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/data:/hydra/data:ro
+  - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/${HYDRA_STATE_SUBDIR:-state-docker}:/hydra/state
+  - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/cache/linux-x86_64:/hydra/cache/linux-x86_64
+  - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/cache/enrich:/hydra/cache/enrich
+  - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/exports:/hydra/exports
+
+services:
+  api:
+    build:
+      context: .
+      target: api
+    image: ${HYDRA_IMAGE:-ghcr.io/fotohubpl/hydra-nexus}:${HYDRA_IMAGE_TAG:-latest}
+    user: "${HYDRA_UID:-1000}:${HYDRA_GID:-1000}"   # owner of the host state/models dirs
+    network_mode: host
+    environment:
+      HYDRA_API_PORT: "${HYDRA_API_PORT:-8000}"
+      HYDRA_WORKERS: "${HYDRA_WORKERS:-8}"
+      HYDRA_TORCH_THREADS: "${HYDRA_TORCH_THREADS:-8}"
+      HYDRA_CPU_BUDGET: "${HYDRA_CPU_BUDGET:-8}"
+      HYDRA_OFFLINE: "${HYDRA_OFFLINE:-1}"
+      HYDRA_ENRICH: "${HYDRA_ENRICH:-0}"
+      HYDRA_ENRICH_CACHE: /hydra/cache/enrich
+      HYDRA_SCHEDULER: "${HYDRA_SCHEDULER:-1}"   # watchlist / inbox / ad-library jobs in the API (offline: replay only)
+      # Panel login (docs/SECURITY_AUTH.md): first start writes /hydra/state/ADMIN_CREDENTIALS.txt (0600) and a banner,
+      # read it with `docker compose logs api | grep -A3 HYDRA`; HYDRA_ADMIN_PASSWORD fixes the first admin password.
+      HYDRA_AUTH: "${HYDRA_AUTH:-1}"
+      HYDRA_ADMIN_PASSWORD: "${HYDRA_ADMIN_PASSWORD:-}"
+      HYDRA_PUBLIC_HOSTS: "${HYDRA_PUBLIC_HOSTS:-}"   # demo behind a tunnel (INSTALL.md 6a); honoured only with HYDRA_AUTH=1
+      HYDRA_UI_DIST: /app/ui/dist
+      HYDRA_VIS_REFERENCE_DIR: /hydra/state/reference   # GAP B11; empty or missing dir = <data>/nask/reference
+    volumes: *hydra-volumes
+    healthcheck:
+      # "$$" is a literal "$" for compose: the container shell expands HYDRA_API_PORT at check time.
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:$${HYDRA_API_PORT:-8000}/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+    restart: unless-stopped
+
+  # ---- GUI for Docker Desktop (macOS/Windows) or any host without `network_mode: host`:
+  #   docker compose --profile gui-ports up -d gui      ->  http://127.0.0.1:8000/  (HYDRA_API_PORT=8200 for another port)
+  # Bridge network; the port is published on the host's 127.0.0.1 only, so nothing on the LAN can reach it. Inside its
+  # own network namespace the API must bind 0.0.0.0 for Docker's port forwarding; hydra.config allows that only with
+  # HYDRA_IN_CONTAINER=1 (set here, nowhere else) and the Host/Origin guard still rejects non-local Host headers.
+  # Same state volume as `api`: run one of the two (`docker compose stop api`). Offline by HYDRA_OFFLINE=1 + the
+  # process network guard (the bridge itself has outbound access; the `cli` analyse/assign path uses no network).
+  gui:
+    image: ${HYDRA_IMAGE:-ghcr.io/fotohubpl/hydra-nexus}:${HYDRA_IMAGE_TAG:-latest}
+    user: "${HYDRA_UID:-1000}:${HYDRA_GID:-1000}"
+    profiles: ["gui-ports"]
+    ports:
+      - "127.0.0.1:${HYDRA_API_PORT:-8000}:8000"
+    environment:
+      HYDRA_IN_CONTAINER: "1"
+      HYDRA_API_HOST: 0.0.0.0
+      HYDRA_API_PORT: "8000"
+      HYDRA_WORKERS: "${HYDRA_WORKERS:-8}"
+      HYDRA_TORCH_THREADS: "${HYDRA_TORCH_THREADS:-8}"
+      HYDRA_CPU_BUDGET: "${HYDRA_CPU_BUDGET:-8}"
+      HYDRA_OFFLINE: "1"
+      HYDRA_ENRICH: "0"
+      HYDRA_ENRICH_CACHE: /hydra/cache/enrich
+      HYDRA_SCHEDULER: "${HYDRA_SCHEDULER:-1}"
+      HYDRA_AUTH: "${HYDRA_AUTH:-1}"                       # panel login, see the `api` service
+      HYDRA_ADMIN_PASSWORD: "${HYDRA_ADMIN_PASSWORD:-}"
+      HYDRA_PUBLIC_HOSTS: "${HYDRA_PUBLIC_HOSTS:-}"   # demo behind a tunnel (INSTALL.md 6a); honoured only with HYDRA_AUTH=1
+      HYDRA_UI_DIST: /app/ui/dist
+      HYDRA_VIS_REFERENCE_DIR: /hydra/state/reference
+    volumes: *hydra-volumes
+    healthcheck:
+      test: ["CMD-SHELL", "curl -fsS http://127.0.0.1:8000/health || exit 1"]
+      interval: 30s
+      timeout: 5s
+      start_period: 20s
+      retries: 3
+    restart: unless-stopped
+
+  # ---- one-time model download (the only step that needs network): `docker compose --profile models run --rm models`
+  # Fetches the pinned weights + CERT/PSL reference data (models.lock.json), then re-hashes them and runs one offline
+  # smoke test per model with a socket guard. Writes $HYDRA_HOST_ROOT/models, data/external and the PSL cache.
+  models:
+    image: ${HYDRA_IMAGE:-ghcr.io/fotohubpl/hydra-nexus}:${HYDRA_IMAGE_TAG:-latest}
+    user: "${HYDRA_UID:-1000}:${HYDRA_GID:-1000}"   # owner of the host state/models dirs
+    profiles: ["models"]
+    environment:
+      HYDRA_MODEL_DOWNLOAD: "1"
+      HYDRA_DATA_DIR: /hydra/data
+      HYDRA_OFFLINE: "0"
+      HF_HUB_OFFLINE: "0"
+      TRANSFORMERS_OFFLINE: "0"
+    entrypoint: ["bash", "-c"]
+    command:
+      - >-
+        python scripts/fetch_models.py $${HYDRA_FETCH_ARGS:-} &&
+        python scripts/fetch_misp_warninglists.py --commit 40e2b570fda2e5443a2d6fa1d1db16c37ab0a956 &&
+        python scripts/fetch_models.py --verify --lock /hydra/models/models.lock.json
+    volumes:
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/models:/hydra/models
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/data/external:/hydra/data/external
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/cache/linux-x86_64:/hydra/cache/linux-x86_64
+    healthcheck:
+      disable: true
+    restart: "no"
+
+  # ---- offline CLI with NO network at all (network_mode none):
+  #   docker compose --profile cli run --rm cli analyse /hydra/data/<known-base-folder>
+  #   docker compose --profile cli run --rm cli assign-batch /hydra/data/<new-items-folder> --out /hydra/exports/<name>
+  # Stop the `api` service first (`docker compose stop api`): SQLite has one writer.
+  cli:
+    image: ${HYDRA_IMAGE:-ghcr.io/fotohubpl/hydra-nexus}:${HYDRA_IMAGE_TAG:-latest}
+    user: "${HYDRA_UID:-1000}:${HYDRA_GID:-1000}"   # owner of the host state/models dirs
+    profiles: ["cli"]
+    network_mode: none
+    environment:
+      HYDRA_OFFLINE: "1"
+      HYDRA_ENRICH: "0"
+      HYDRA_WORKERS: "${HYDRA_WORKERS:-8}"
+      HYDRA_TORCH_THREADS: "${HYDRA_TORCH_THREADS:-8}"
+      HYDRA_CPU_BUDGET: "${HYDRA_CPU_BUDGET:-8}"
+      HYDRA_ENRICH_CACHE: /hydra/cache/enrich
+      HYDRA_VIS_REFERENCE_DIR: /hydra/state/reference   # face/logo reference base (GAP B11); empty dir = data fallback
+    entrypoint: ["hydra"]
+    command: ["--help"]
+    volumes: *hydra-volumes
+    healthcheck:
+      disable: true
+    restart: "no"
+
+  # ---- OPTIONAL local AI analyst (CR-LLM-4), never part of the jury path: `docker compose --profile bielik up -d bielik`
+  # Model first: `just llm-fetch` (Bielik 4.5B Q4_K_M, Apache-2.0, ~2.9 GB into ~/HydraNexus/models-llm). The api
+  # service uses it only with HYDRA_LLM=1 HYDRA_LLM_BACKEND=local HYDRA_LLM_LOCAL_URL=http://127.0.0.1:8090/v1.
+  # Image tag not pulled/tested by the team (the b12606 release binaries were).
+  bielik:
+    image: ghcr.io/ggml-org/llama.cpp:server-b12606   # MIT
+    profiles: ["bielik"]
+    network_mode: host                              # binds 127.0.0.1 only (see --host)
+    command: ["--model", "/models/Bielik-4.5B-v3.0-Instruct-GGUF/Bielik-4.5B-v3.0-Instruct-Q4_K_M.gguf",
+              "--alias", "bielik-4.5b-v3.0-instruct-q4_k_m", "--host", "127.0.0.1", "--port", "8090",
+              "--ctx-size", "8192", "--parallel", "1", "--no-webui", "--no-jinja", "--chat-template", "chatml",
+              "--seed", "7"]
+    volumes:
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/models-llm:/models:ro
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8090/health"]
+      interval: 15s
+      timeout: 5s
+      start_period: 60s
+      retries: 5
+    restart: unless-stopped
+
+  # ---- optional graph read model: `docker compose --profile neo4j up -d` (docs/NEO4J.md) -------------------
+  # Neo4j Community (GPL-3.0) runs as a separate server; HYDRA does not link to it or ship its code.
+  # Password: `bash scripts/neo4j_password.sh` writes NEO4J_PASSWORD to .env (gitignored), never committed.
+  # `:-` (not `:?`) so `docker compose up` works without the neo4j profile; with the profile and no
+  # password, NEO4J_AUTH is "neo4j/" and the container refuses to start (fail-closed, no default password).
+  neo4j:
+    image: neo4j:5.26-community
+    profiles: ["neo4j"]
+    network_mode: host
+    user: "1000:1000"
+    environment:
+      NEO4J_AUTH: "neo4j/${NEO4J_PASSWORD:-}"
+      NEO4J_server_default__listen__address: 127.0.0.1
+      NEO4J_server_http_listen__address: "127.0.0.1:${NEO4J_HTTP_PORT:-7474}"
+      NEO4J_server_bolt_listen__address: "127.0.0.1:${NEO4J_BOLT_PORT:-7687}"
+      NEO4J_server_https_enabled: "false"
+      NEO4J_server_memory_heap_initial__size: 1G
+      NEO4J_server_memory_heap_max__size: 1G
+      NEO4J_server_memory_pagecache_size: 512M
+      NEO4J_dbms_usage__report_enabled: "false"
+    volumes:
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/${HYDRA_NEO4J_SUBDIR:-neo4j}/data:/data
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/${HYDRA_NEO4J_SUBDIR:-neo4j}/import:/var/lib/neo4j/import
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/${HYDRA_NEO4J_SUBDIR:-neo4j}/logs:/logs
+    # The check reads the bolt address from the container env: NEO4J_BOLT_PORT is not passed in, so with a
+    # non-default port the old check probed 7687, stayed "unhealthy" and neo4j-load never started (2026-11-22).
+    healthcheck:
+      test: ["CMD-SHELL", "cypher-shell -a bolt://$${NEO4J_server_bolt_listen__address} -u neo4j -p \"$${NEO4J_AUTH#neo4j/}\" 'RETURN 1' >/dev/null 2>&1 || exit 1"]
+      interval: 5s
+      timeout: 10s
+      start_period: 20s
+      retries: 30
+    restart: unless-stopped
+
+  # One-shot: export the latest analyse run (CSV + import.cypher) into the shared import folder.
+  neo4j-export:
+    image: ${HYDRA_IMAGE:-ghcr.io/fotohubpl/hydra-nexus}:${HYDRA_IMAGE_TAG:-latest}
+    profiles: ["neo4j"]
+    network_mode: host
+    command: ["hydra", "export-neo4j", "/hydra/neo4j-import"]
+    environment:
+      HYDRA_OFFLINE: "1"
+    volumes:
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/${HYDRA_STATE_SUBDIR:-state-docker}:/hydra/state
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/${HYDRA_NEO4J_SUBDIR:-neo4j}/import:/hydra/neo4j-import
+    restart: "no"
+
+  # One-shot: replace the graph with the exported run (the graph is a read model, rebuilt from SQLite).
+  neo4j-load:
+    image: neo4j:5.26-community
+    profiles: ["neo4j"]
+    network_mode: host
+    user: "1000:1000"
+    depends_on:
+      neo4j:
+        condition: service_healthy
+      neo4j-export:
+        condition: service_completed_successfully
+    environment:
+      # cypher-shell reads NEO4J_USERNAME / NEO4J_PASSWORD, so the password is not on a command line.
+      NEO4J_USERNAME: neo4j
+      NEO4J_PASSWORD: "${NEO4J_PASSWORD:-}"
+      NEO4J_ADDRESS: "bolt://127.0.0.1:${NEO4J_BOLT_PORT:-7687}"
+    entrypoint: ["bash", "-c"]
+    command:
+      - >-
+        set -e;
+        cs="cypher-shell -a $${NEO4J_ADDRESS}";
+        $$cs "MATCH (n) CALL { WITH n DETACH DELETE n } IN TRANSACTIONS OF 10000 ROWS";
+        $$cs -f /var/lib/neo4j/import/import.cypher;
+        $$cs --format plain "MATCH (n) RETURN labels(n)[0] AS label, count(*) AS n ORDER BY label"
+    volumes:
+      - ${HYDRA_HOST_ROOT:-${HOME}/HydraNexus}/${HYDRA_NEO4J_SUBDIR:-neo4j}/import:/var/lib/neo4j/import:ro
+    restart: "no"
+
+  ui:
+    build:
+      context: .
+      target: ui
+    image: hydra-nexus-ui:${HYDRA_IMAGE_TAG:-local}
+    profiles: ["preview"]
+    network_mode: host
+    environment:
+      HYDRA_UI_BACKEND: http://127.0.0.1:${HYDRA_API_PORT:-8000}
+    depends_on:
+      - api
+    restart: unless-stopped

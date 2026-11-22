@@ -1,0 +1,18 @@
+{
+ "name": "synthetic microsoft-attack-simulator",
+ "type": "substring",
+ "version": 1,
+ "description": "synthetic test fixture",
+ "matching_attributes": [
+  "ip-src",
+  "ip-dst",
+  "domain",
+  "domain|ip",
+  "hostname",
+  "url"
+ ],
+ "list": [
+  "52.168.52.134",
+  "portal.simfixture.net"
+ ]
+}

@@ -1,0 +1,16 @@
+{
+ "name": "synthetic google",
+ "type": "hostname",
+ "version": 1,
+ "description": "synthetic test fixture",
+ "matching_attributes": [
+  "domain",
+  "hostname",
+  "domain|ip",
+  "url"
+ ],
+ "list": [
+  "web.app",
+  "googlefixture.com"
+ ]
+}

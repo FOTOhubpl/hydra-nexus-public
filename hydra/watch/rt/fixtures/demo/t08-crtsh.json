@@ -1,0 +1,29 @@
+[
+ {
+  "id": 8000000800,
+  "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+  "name_value": "podatek.zysk-orlen-91.example\nwww.podatek.zysk-orlen.example",
+  "entry_timestamp": "2026-11-20T04:08:00",
+  "not_before": "2026-11-20T04:08:00"
+ },
+ {
+  "id": 8000000801,
+  "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+  "name_value": "doplata.zysk-orlen-63.example\nwww.doplata.zysk-orlen.example",
+  "entry_timestamp": "2026-11-20T04:08:00",
+  "not_before": "2026-11-20T04:08:00"
+ },
+ {
+  "id": 8000000802,
+  "issuer_name": "C=US, O=Let's Encrypt, CN=R11",
+  "name_value": "dywidenda.zysk-orlen-15.example\nwww.dywidenda.zysk-orlen.example",
+  "entry_timestamp": "2026-11-20T04:08:00",
+  "not_before": "2026-11-20T04:08:00"
+ },
+ {
+  "id": 8000000999,
+  "issuer_name": "C=US, O=Let's Encrypt, CN=R10",
+  "name_value": "promo.zysk-orlen-demo.example",
+  "entry_timestamp": "2026-11-20T04:08:00"
+ }
+]

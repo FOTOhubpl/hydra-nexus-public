@@ -1,0 +1,9 @@
+{
+ "name": "synthetic personal-email-domains",
+ "type": "substring",
+ "version": 1,
+ "description": "test fixture",
+ "list": [
+  "gmail.com"
+ ]
+}

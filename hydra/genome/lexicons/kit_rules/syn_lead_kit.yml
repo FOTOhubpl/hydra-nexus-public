@@ -1,0 +1,17 @@
+# HYDRA-owned kit rule (written for a generic/synthetic lead-capture kit, not derived from any IOK rule).
+# Fires when a page carries both of a lead kit's hidden-input anchors AND posts to its exfil endpoint.
+id: syn_lead_kit
+title: Synthetic lead-capture kit (hidden fields + exfil endpoint)
+description: Generic anchors used by the synthetic fixture kit in HYDRA tests.
+references:
+  - internal: docs/genes/INF.md
+tags:
+  - kit
+  - synthetic
+quality: 1.0
+detection:
+  hidden_field:
+    html|contains: 'name="offer_uuid"'
+  exfil_endpoint:
+    requests|contains: /api/v1/trigger/field/
+  condition: hidden_field and exfil_endpoint

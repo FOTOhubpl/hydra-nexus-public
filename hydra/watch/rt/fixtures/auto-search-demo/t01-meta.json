@@ -1,0 +1,117 @@
+{
+ "format": "hydra.meta.pages.v1",
+ "synthetic": true,
+ "graph_api_version": "v26.0",
+ "pages": [
+  {
+   "query": {
+    "kind": "keyword",
+    "value": "zarabiaj"
+   },
+   "page": 0,
+   "data": {
+    "data": [
+     {
+      "id": "syn-auto-1",
+      "page_id": "100000000000101",
+      "page_name": "Okazje Inwestycyjne Demo (SYNTETYCZNE)",
+      "ad_creation_time": "2026-11-21T08:00:00+0000",
+      "ad_creative_bodies": [
+       "(wypełniane przy odtworzeniu z lokalnej kampanii)"
+      ],
+      "ad_creative_link_titles": [
+       "Oferta (SYNTETYCZNE)"
+      ],
+      "ad_creative_link_captions": [],
+      "ad_creative_link_descriptions": [],
+      "ad_delivery_start_time": "2026-11-21",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=syn-auto-1",
+      "publisher_platforms": [
+       "facebook",
+       "instagram"
+      ],
+      "languages": [
+       "pl"
+      ],
+      "hydra_campaign_probe": true
+     },
+     {
+      "id": "syn-auto-2",
+      "page_id": "100000000000102",
+      "page_name": "ORLEN Inwestycje Demo (SYNTETYCZNE)",
+      "ad_creation_time": "2026-11-21T08:00:00+0000",
+      "ad_creative_bodies": [
+       "SYNTETYCZNE: Inwestuj w Orlen i zarabiaj 4000 zł miesięcznie! Znany ekonomista ujawnił sposób. Pisz na WhatsApp. https://orlen-zysk-demo2.example/start"
+      ],
+      "ad_creative_link_titles": [
+       "Oferta (SYNTETYCZNE)"
+      ],
+      "ad_creative_link_captions": [
+       "ORLEN-ZYSK-DEMO2.EXAMPLE"
+      ],
+      "ad_creative_link_descriptions": [],
+      "ad_delivery_start_time": "2026-11-21",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=syn-auto-2",
+      "publisher_platforms": [
+       "facebook",
+       "instagram"
+      ],
+      "languages": [
+       "pl"
+      ]
+     },
+     {
+      "id": "syn-auto-3",
+      "page_id": "100000000000103",
+      "page_name": "Ogród i Dom Demo (SYNTETYCZNE)",
+      "ad_creation_time": "2026-11-21T08:00:00+0000",
+      "ad_creative_bodies": [
+       "SYNTETYCZNE: Wiosenna wyprzedaż nasion i narzędzi ogrodowych. https://ogrod-demo.example/sklep"
+      ],
+      "ad_creative_link_titles": [
+       "Oferta (SYNTETYCZNE)"
+      ],
+      "ad_creative_link_captions": [
+       "OGROD-DEMO.EXAMPLE"
+      ],
+      "ad_creative_link_descriptions": [],
+      "ad_delivery_start_time": "2026-11-21",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=syn-auto-3",
+      "publisher_platforms": [
+       "facebook"
+      ],
+      "languages": [
+       "pl"
+      ],
+      "ad_delivery_stop_time": "2026-11-22"
+     },
+     {
+      "id": "syn-auto-4",
+      "page_id": "100000000000104",
+      "page_name": "Baltic Pipe Dochód Demo (SYNTETYCZNE)",
+      "ad_creation_time": "2026-11-22T08:00:00+0000",
+      "ad_creative_bodies": [
+       "SYNTETYCZNE: Baltic Pipe: gwarantowany zysk 900 zł dziennie, pasywny dochód. Kontakt t.me/demo_inwestycje https://baltic-dochod-demo.example/"
+      ],
+      "ad_creative_link_titles": [
+       "Oferta (SYNTETYCZNE)"
+      ],
+      "ad_creative_link_captions": [
+       "BALTIC-DOCHOD-DEMO.EXAMPLE"
+      ],
+      "ad_creative_link_descriptions": [],
+      "ad_delivery_start_time": "2026-11-22",
+      "ad_snapshot_url": "https://www.facebook.com/ads/archive/render_ad/?id=syn-auto-4",
+      "publisher_platforms": [
+       "facebook",
+       "instagram"
+      ],
+      "languages": [
+       "pl"
+      ]
+     }
+    ]
+   }
+  }
+ ]
+}

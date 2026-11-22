@@ -1,0 +1,13 @@
+{
+ "name": "synthetic mozilla-CA",
+ "type": "string",
+ "version": 1,
+ "description": "synthetic test fixture",
+ "matching_attributes": [
+  "x509-fingerprint-sha1",
+  "x509-fingerprint-sha256"
+ ],
+ "list": [
+  "abababababababababababababababababababababababababababababababab"
+ ]
+}

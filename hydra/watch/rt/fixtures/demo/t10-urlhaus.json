@@ -1,0 +1,53 @@
+{
+ "query_status": "ok",
+ "urls": [
+  {
+   "id": "70100",
+   "url": "http://bonus-kryptowaluty209.test/bins/41.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:10:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70101",
+   "url": "http://portfel-dywidenda460.test/bins/70.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:10:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70102",
+   "url": "http://baltyk-paczka181.test/bins/82.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:10:00 UTC",
+   "urlhaus_reference": null
+  },
+  {
+   "id": "70103",
+   "url": "http://kryptowaluty-zysk786.test/bins/52.sh",
+   "url_status": "online",
+   "threat": "malware_download",
+   "tags": [
+    "elf",
+    "mirai"
+   ],
+   "date_added": "2026-11-20 04:10:00 UTC",
+   "urlhaus_reference": null
+  }
+ ]
+}

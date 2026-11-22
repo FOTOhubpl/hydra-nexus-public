@@ -1,0 +1,10 @@
+{
+ "name": "synthetic cloudflare",
+ "type": "cidr",
+ "version": 1,
+ "description": "test fixture",
+ "list": [
+  "104.16.0.0/13",
+  "2606:4700::/32"
+ ]
+}

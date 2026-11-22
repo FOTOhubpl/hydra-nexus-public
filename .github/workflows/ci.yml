@@ -1,0 +1,74 @@
+# Quality gate on GitHub-hosted runners: ruff + pytest (Python 3.11, uv.lock) and UI typecheck + vitest
+# (pnpm-lock.yaml). Synthetic fixtures only; no secrets, no model weights (model-dependent tests skip), no
+# organiser data (tests gated on HYDRA_SAMPLE_TEST skip). Actions are pinned by full commit SHA (major tag in the
+# comment), as required by the organisation's Actions policy.
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  python:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      HYDRA_OFFLINE: "1"
+      HYDRA_LEXICON_DIR: none
+      HYDRA_ROOT: ${{ github.workspace }}/../hydra-root
+      HYDRA_STATE_DIR: ${{ github.workspace }}/../hydra-root/state
+      HYDRA_DATA_DIR: ${{ github.workspace }}/../hydra-root/data
+      HYDRA_MODELS_DIR: ${{ github.workspace }}/../hydra-root/models
+      HYDRA_CACHE_DIR: ${{ github.workspace }}/../hydra-root/cache
+      HYDRA_EXTRACT_WORKERS: "2"
+      HYDRA_TORCH_THREADS: "2"
+      OMP_NUM_THREADS: "2"
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+      - name: System packages (ffmpeg, tesseract pol/eng, OpenCV/MediaPipe runtime libs)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends ffmpeg tesseract-ocr tesseract-ocr-pol tesseract-ocr-eng \
+            libgl1 libglib2.0-0 libegl1 libgles2 dnsutils
+      - uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d  # v10
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+      - name: Python environment
+        run: |
+          uv python install 3.11
+          uv sync --locked
+          mkdir -p "$HYDRA_STATE_DIR" "$HYDRA_DATA_DIR" "$HYDRA_MODELS_DIR" "$HYDRA_CACHE_DIR"
+      - name: ruff
+        run: uv run ruff check .
+      - name: pytest
+        run: uv run pytest -q -p no:cacheprovider
+
+  ui:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: ui
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7
+      - uses: pnpm/action-setup@73e46992e05b19abd31f2f3c20e0e7370d762115  # v6 (version from ui/package.json packageManager)
+        with:
+          package_json_file: ui/package.json
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1  # v7
+        with:
+          node-version: 24
+          cache: pnpm
+          cache-dependency-path: ui/pnpm-lock.yaml
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm -s typecheck
+      - run: pnpm -s test

@@ -1,0 +1,9 @@
+{
+ "name": "synthetic public-dns-v4",
+ "type": "cidr",
+ "version": 1,
+ "description": "test fixture",
+ "list": [
+  "1.1.1.1/32"
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "about": "Public figures whose likeness or name is documented in a primary public source as abused in Polish scam ads or lures (PL-SCAM stream, 2026-11-21). Names only, as public knowledge; listing never implies that the person took part in a scam. Stems are folded (hydra.genome.txt_norm.fold); a surname token matches when it starts with a stem and adds at most 3 characters (Polish inflection).",
+ "origin": "documented",
+ "version": 1,
+ "persons": [
+  {
+   "canonical": "Wojciech Cejrowski",
+   "surnames": [
+    "cejrowsk"
+   ],
+   "given": [
+    "wojciech"
+   ],
+   "role": "celebrity",
+   "abuse": "fake investment pages using his likeness (300 new pages in one week of March 2024)",
+   "sources": [
+    {
+     "url": "https://cert.pl/uploads/docs/Raport_CP_2024.pdf",
+     "where": "p. 38, 'Oszustwa reklamowe na dużych platformach internetowych'",
+     "published": "2025",
+     "accessed": "2026-11-21"
+    }
+   ]
+  },
+  {
+   "canonical": "Jerzy Owsiak",
+   "surnames": [
+    "owsiak"
+   ],
+   "given": [
+    "jerz"
+   ],
+   "role": "public_figure",
+   "abuse": "fake posts about his 'accident' used as a Facebook-login phishing lure (2022); fake WOŚP fundraiser after the September 2024 flood",
+   "sources": [
+    {
+     "url": "https://cert.pl/uploads/docs/Raport_CP_2022.pdf",
+     "where": "p. 55, fig. 30",
+     "published": "2023",
+     "accessed": "2026-11-21"
+    },
+    {
+     "url": "https://cert.pl/uploads/docs/Raport_CP_2024.pdf",
+     "where": "p. 39, fake WOŚP fundraiser",
+     "published": "2025",
+     "accessed": "2026-11-21"
+    }
+   ]
+  }
+ ]
+}

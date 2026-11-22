@@ -1,0 +1,19 @@
+# HYDRA-owned negative rule: a generic domain-parking placeholder page. Marks the page as a known template
+# so its title/DOM genes are not used as link evidence. Not derived from any IOK rule.
+id: neg_parked_template
+title: Generic parked-domain placeholder template
+description: Default registrar/parking placeholder; its title and skeleton are shared by unrelated domains.
+polarity: negative
+case_insensitive: true
+tags:
+  - parked
+  - boilerplate
+suppresses:
+  - page_title
+  - dom_skeleton_hash
+detection:
+  parked_title:
+    title|contains: this domain is parked
+  parked_marker:
+    html|contains: buy this domain
+  condition: parked_title or parked_marker

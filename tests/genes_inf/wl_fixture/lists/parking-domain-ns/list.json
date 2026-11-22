@@ -1,0 +1,10 @@
+{
+ "name": "synthetic parking-domain-ns",
+ "type": "hostname",
+ "version": 1,
+ "description": "test fixture",
+ "list": [
+  "parkingcrew.net",
+  "registrar-servers.com"
+ ]
+}

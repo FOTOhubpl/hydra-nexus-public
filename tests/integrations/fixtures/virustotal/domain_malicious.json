@@ -1,0 +1,13 @@
+{
+ "_provenance": "Hand-written from the public VirusTotal API v3 documentation (domain object, last_analysis_stats); not recorded from a real call. Values are invented.",
+ "data": {
+  "id": "energia-zysk.example",
+  "type": "domain",
+  "attributes": {
+   "last_analysis_date": 1763700000,
+   "last_analysis_stats": {"harmless": 55, "malicious": 7, "suspicious": 1, "undetected": 30, "timeout": 0},
+   "reputation": -12,
+   "categories": {"Forcepoint ThreatSeeker": "phishing"}
+  }
+ }
+}

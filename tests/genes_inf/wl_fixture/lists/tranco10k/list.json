@@ -1,0 +1,15 @@
+{
+ "name": "synthetic tranco10k",
+ "type": "hostname",
+ "version": 1,
+ "description": "synthetic test fixture",
+ "matching_attributes": [
+  "hostname",
+  "domain",
+  "url",
+  "domain|ip"
+ ],
+ "list": [
+  "popularsite-fixture.pl"
+ ]
+}

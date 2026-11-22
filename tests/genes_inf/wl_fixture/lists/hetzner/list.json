@@ -1,0 +1,9 @@
+{
+ "name": "synthetic hetzner",
+ "type": "cidr",
+ "version": 1,
+ "description": "test fixture",
+ "list": [
+  "5.9.0.0/16"
+ ]
+}
